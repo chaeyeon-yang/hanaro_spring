@@ -5,8 +5,9 @@
 
 
     <!-- 2. Dao Bean을 선언 한다. -->
-    <bean id="custDao" class="com.hana.app.repository.CustDao">
+    <bean id="custDao" class="com.hana.app.repository.CustMySQLDao">
     </bean>
+    <!-- 1. Service Bean을 선언 한다. -->
     <bean id="userService" class="com.hana.app.service.CustService">
         <constructor-arg name="dao" ref="custDao" ></constructor-arg>
     </bean>

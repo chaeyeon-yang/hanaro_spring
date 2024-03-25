@@ -12,7 +12,7 @@ class Spring2ApplicationTests {
         Service<String, CustDto> service =
                 (Service<String, CustDto>) factory.getBean("custService");
 
-        CustDto u = new CustDto("id02", "pwd01", "lee");
+        CustDto u = new CustDto("id04", "pwd04", "youngk");
         try {
             service.add(u);
         } catch (DuplicatedIdException e) {
@@ -20,6 +20,4 @@ class Spring2ApplicationTests {
         }
 
     }
-
-
 }

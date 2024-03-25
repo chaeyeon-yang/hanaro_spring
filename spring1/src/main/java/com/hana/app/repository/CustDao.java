@@ -1,8 +1,8 @@
-package app.repository;
+package com.hana.app.repository;
 
-import com.hana.data.CustDto;
-import com.hana.exception.DuplicatedIdException;
-import com.hana.frame.Dao;
+import com.hana.app.data.CustDto;
+import com.hana.app.exception.DuplicatedIdException;
+import com.hana.app.frame.Dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,23 +25,23 @@ public class CustDao implements Dao<String, CustDto> {
     }
 
     @Override
-    public int update(CustDto custDto) throws IdNotFoundException{
+    public int update(CustDto custDto) throws Exception {
         try {
             System.out.println("Oracle DB:Updated ... "+custDto);
 
-        } catch (IdNotFoundException e) {
+        } catch (Exception e) {
             System.out.println("Invalid access ...");
         }
         return 0;
     }
 
     @Override
-    public CustDto select(String s) throws NotFoundException {
+    public CustDto select(String s) throws Exception {
         try {
             return CustDto.builder().id(s).pwd("pwd01").name("james").build();
-        } catch (NotFoundException e) {
+        } catch (Exception e) {
             System.out.println("Invalid access ...");
-            return 0;
+            return null;
         }
     }
 

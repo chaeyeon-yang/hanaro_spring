@@ -1,4 +1,4 @@
-package app.data;
+package com.hana.app.data;
 
 import lombok.*;
 

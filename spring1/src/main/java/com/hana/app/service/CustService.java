@@ -1,10 +1,10 @@
-package app.service;
+package com.hana.app.service;
 
-import com.hana.data.CustDto;
-import com.hana.exception.DuplicatedIdException;
-import com.hana.frame.Dao;
-import com.hana.frame.Service;
-import com.hana.repository.CustDao;
+import com.hana.app.data.CustDto;
+import com.hana.app.exception.DuplicatedIdException;
+import com.hana.app.frame.Dao;
+import com.hana.app.frame.Service;
+import com.hana.app.repository.CustDao;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ public class CustService implements Service<String, CustDto> {
 
     Dao<String, CustDto> dao;
 
+    // 일반적으로 자바에서 사용하는 방식
     public CustService(){
         dao = new CustDao();
     }
@@ -36,10 +37,10 @@ public class CustService implements Service<String, CustDto> {
     }
 
     @Override
-    public int del(String s) throws IdNotFoundException {
+    public int del(String s) throws Exception {
         try {
             dao.delete(s);
-        } catch (IdNotFoundException e) {
+        } catch (Exception e) {
             System.out.println("ID Not Found ...");
         }
 

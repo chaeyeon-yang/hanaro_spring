@@ -4,17 +4,17 @@ import com.hana.app.data.CustDto;
 import com.hana.app.exception.DuplicatedIdException;
 import com.hana.app.frame.Dao;
 import com.hana.app.frame.Service;
-import com.hana.app.repository.CustDao;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+@org.springframework.stereotype.Service
 public class CustService implements Service<String, CustDto> {
 
+    @Autowired
     Dao<String, CustDto> dao;
 
-    public  CustService(Dao dao){
-        this.dao = dao;
-    }
+
     @Override
     public int add(CustDto custDto) throws DuplicatedIdException {
         System.out.println("Start TR....");

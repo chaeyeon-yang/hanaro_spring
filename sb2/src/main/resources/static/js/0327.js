@@ -28,7 +28,9 @@ let html2 = {
 }
 
 let login = {
-    init: function () {
+    url: '',
+    init: function (url) {
+        this.url = url;
         $('#login_form > button').click(function (){
             let id = $('#id').val();
             let pwd = $('#pwd').val();
@@ -48,8 +50,43 @@ let login = {
     send: function () {
         $('#login_form').attr({
             'method':'post',
-            'action':'/loginimpl'
+            'action': this.url
         });
         $('#login_form').submit();
+    }
+}
+
+let register = {
+    url: '',
+    init: function (url) {
+        this.url = url;
+        $('#register_form > button').click(function (){
+            let name = $('#name').val()
+            let id = $('#id').val();
+            let pwd = $('#pwd').val();
+            if (name == '' || name == null) {
+                alert('이름를 입력하세요');
+                $('#name').focus();
+                return;
+            }
+            if (id == '' || id == null) {
+                alert('ID를 입력하세요');
+                $('#id').focus();
+                return;
+            }
+            if (pwd == '' || pwd == null) {
+                alert('PWD를 입력하세요');
+                $('#pwd').focus();
+                return;
+            }
+            login.send();
+        });
+    },
+    send: function () {
+        $('#register_form').attr({
+            'method':'post',
+            'action': this.url
+        });
+        $('#register_form').submit();
     }
 }

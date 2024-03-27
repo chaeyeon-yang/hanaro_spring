@@ -11,7 +11,7 @@
 
 <script>
     $(function () {
-        login.init()
+        login.init('<c:url value="/loginimpl"/>')
     })
 </script>
 

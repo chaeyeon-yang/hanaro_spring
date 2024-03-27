@@ -45,5 +45,25 @@ public class MainController {
    @RequestMapping("/register")
    public String register(Model model) {
       model.addAttribute("center", "register");
-      return "index";}
+      return "index";
+   }
+   @RequestMapping("/registerimpl")
+   public String registerimpl(Model model, @RequestParam("name") String name, @RequestParam("id") String id, @RequestParam("pwd") String pwd, HttpSession httpSession) {
+      log.info("-----------------------------");
+      log.info(id+" "+pwd+" "+name);
+      if (id.equals("qqq") && pwd.equals("111")) {
+//         httpSession.setMaxInactiveInterval(80000);
+         httpSession.setAttribute("id", id);
+         model.addAttribute("center", "center");
+
+      } else {
+         log.info("로그인 실패");
+         model.addAttribute("center", "register");
+
+      }
+      return "index";
+   }
+
+
+
 }

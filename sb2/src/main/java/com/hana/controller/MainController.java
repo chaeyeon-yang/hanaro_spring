@@ -1,5 +1,6 @@
 package com.hana.controller;
 
+import com.hana.app.data.dto.CustDto;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -48,12 +49,12 @@ public class MainController {
       return "index";
    }
    @RequestMapping("/registerimpl")
-   public String registerimpl(Model model, @RequestParam("name") String name, @RequestParam("id") String id, @RequestParam("pwd") String pwd, HttpSession httpSession) {
+   public String registerimpl(Model model, CustDto custDto, HttpSession httpSession) {
       log.info("-----------------------------");
-      log.info(id+" "+pwd+" "+name);
-      if (id.equals("qqq") && pwd.equals("111")) {
+      log.info(custDto.getId()+" "+custDto.getPwd()+" "+custDto.getName());
+      if (custDto.getId().equals("qqq") && custDto.getPwd().equals("111")) {
 //         httpSession.setMaxInactiveInterval(80000);
-         httpSession.setAttribute("id", id);
+         httpSession.setAttribute("id", custDto.getId());
          model.addAttribute("center", "center");
 
       } else {

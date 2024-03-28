@@ -22,14 +22,14 @@ public class AjaxImplController {
         return date;
     }
 
-//    @RequestMapping("/checkid")
-//    public Object checkid(@RequestParam("id") String id) {
-//        String result = "1";
-//        if (id.equals("qqq")) {
-//            result = "0";
-//        }
-//        return result;
-//    }
+    @RequestMapping("/checkid")
+    public Object checkid(@RequestParam("id") String id) {
+        String result = "1";
+        if (id.equals("qqq")) {
+            result = "0";
+        }
+        return result;
+    }
 //
 //    @RequestMapping("/getdata")
 //    public Object getdata() {

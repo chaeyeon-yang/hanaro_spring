@@ -6,17 +6,37 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-    <div class="container">
-        <h2>Ajax3</h2>
-        <h5>Title description, Sep 2, 2017</h5>
-        <div class="fakeimg">Fake Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-</body>
-</html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<script>
+    let ajax3 = {
+        init: function () {
+            setInterval(function() {
+                $.ajax({
+                    url: '<c:url value="/getsearchrank"/>',
+                    success: function (data) {
+                        console.log(data)
+                        ajax3.display(data); // 받은 데이터를 출력하는 함수 호출
+                    }
+                });
+            }, 5000); // 5초마다 실행 (시간은 밀리초 단위로 설정)
+        },
+        display: function(data) {
+            let result = "";
+
+            for(let i = 0; i < data.length; i++) {
+                result += data[i].rank + "번 "+data[i].title+"\n";
+            }
+            $('#result').text(result);
+        }
+    };
+
+    $(function () {
+        ajax3.init();
+    })
+</script>
+
+<div class="container">
+    <h2>Ajax3 Page</h2>
+    <div id="result"></div>
+</div>

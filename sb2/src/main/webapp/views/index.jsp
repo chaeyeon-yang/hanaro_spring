@@ -67,7 +67,7 @@
                 <a class="nav-link" href="<c:url value="/html/"/>">HTML</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">JQuery</a>
+                <a class="nav-link" href="/jquery/">JQuery</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Ajax</a>

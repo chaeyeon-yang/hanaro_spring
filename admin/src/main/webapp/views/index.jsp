@@ -24,9 +24,13 @@
     <!-- Custom styles for this template-->
     <link href="<c:url value="/css/sb-admin-2.min.css"/>" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="<c:url value="/vendor/datatables/dataTables.bootstrap4.min.css"/>" rel="stylesheet">
+
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<c:url value="/vendor/jquery/jquery.min.js"/>"></script>
+    <script src="<c:url value="/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+
 
     <!-- Core plugin JavaScript-->
     <script src="<c:url value="/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
@@ -34,12 +38,6 @@
     <!-- Custom scripts for all pages-->
     <script src="<c:url value="/js/sb-admin-2.min.js"/>"></script>
 
-    <!-- Page level plugins -->
-    <script src="<c:url value="/vendor/chart.js/Chart.min.js"/>"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="<c:url value="/js/demo/chart-area-demo.js"/>"></script>
-    <script src="<c:url value="/js/demo/chart-pie-demo.js"/>"></script>
 
 </head>
 
@@ -52,7 +50,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value="/index.html"/>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -64,7 +62,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<c:url value="/" />">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -87,7 +85,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Customer Management:</h6>
-                    <a class="collapse-item" href="buttons.html">Add</a>
+                    <a class="collapse-item" href="<c:url value="/buttons.html"/>">Add</a>
                     <a class="collapse-item" href="<c:url value="/cust/get"/>">Get</a>
                 </div>
             </div>
@@ -104,10 +102,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Item Management:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
+                    <a class="collapse-item" href="<c:url value="/utilities-color.html"/>">Add</a>
+                    <a class="collapse-item" href="<c:url value="/item/get"/>">Get</a>
                 </div>
             </div>
         </li>
@@ -115,10 +111,14 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
+
+
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
+
+
 
     </ul>
     <!-- End of Sidebar -->
@@ -297,36 +297,45 @@
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
-                    <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Activity Log
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
+                    <c:choose>
+                        <c:when test="${id == null}">
+                            <a href="" data-toggle="modal" data-target="#logoutModal">login</a>
+                        </c:when>
+                        <c:otherwise>
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                    <img class="img-profile rounded-circle"
+                                         src="img/undraw_profile.svg">
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                     aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Settings
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Activity Log
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+
+
 
                 </ul>
 
@@ -334,14 +343,14 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-           <c:choose>
-               <c:when test="${center == null}">
-                   <jsp:include page="center.jsp"></jsp:include>
-               </c:when>
-               <c:otherwise>
-                   <jsp:include page="${center}.jsp"></jsp:include>
-               </c:otherwise>
-           </c:choose>
+            <c:choose>
+                <c:when test="${center == null}">
+                    <jsp:include page="center.jsp"></jsp:include>
+                </c:when>
+                <c:otherwise>
+                    <jsp:include page="${center}.jsp"></jsp:include>
+                </c:otherwise>
+            </c:choose>
             <!-- /.container-fluid -->
 
         </div>
@@ -382,15 +391,25 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="<c:url value="/login.html"/>">Lgout</a>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Page level plugins -->
+<script src="<c:url value="/vendor/chart.js/Chart.min.js"/>"></script>
+
+<!-- Page level custom scripts -->
+<script src="<c:url value="/js/demo/chart-area-demo.js"/>"></script>
+<script src="<c:url value="/js/demo/chart-pie-demo.js"/>"></script>
 
 
-
+<!-- Page level plugins -->
+<script src="<c:url value="/vendor/datatables/jquery.dataTables.min.js"/>"></script>
+<script src="<c:url value="/vendor/datatables/dataTables.bootstrap4.min.js"/>"></script>
+<!-- Page level custom scripts -->
+<script src="<c:url value="/js/demo/datatables-demo.js"/>"></script>
 </body>
 
 </html>

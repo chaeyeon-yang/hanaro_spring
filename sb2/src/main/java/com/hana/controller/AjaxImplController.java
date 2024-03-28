@@ -30,43 +30,43 @@ public class AjaxImplController {
         }
         return result;
     }
-//
-//    @RequestMapping("/getdata")
-//    public Object getdata() {
-//        List<CustDto> list = new ArrayList<>();
-//        list.add(new CustDto("id01", "pwd01", "dowoon"));
-//        list.add(new CustDto("id01", "pwd01", "dowoon"));
-//        list.add(new CustDto("id01", "pwd01", "dowoon"));
-//        list.add(new CustDto("id01", "pwd01", "dowoon"));
-//
-//        return list;
-//    }
-//    @RequestMapping("/getsearchrank")
-//    public Object getsearchrank() {
-//        List<SearchDto> list = new ArrayList<>();
-//        Random random = new Random();
-//        List<Integer> usedRanks = new ArrayList<>();
-//        List<String> usedTitles = new ArrayList<>();
-//        String[] titles = {"김원필", "윤도운", "박성진", "강영현", "양채연"};
-//
-//        for (int i = 0; i < 5; i++) {
-//            int randomRank;
-//            String randomTitle;
-//            do {
-//                randomRank = random.nextInt(5) + 1;
-//            } while (usedRanks.contains(randomRank));
-//
-//            do {
-//                randomTitle = titles[random.nextInt(titles.length)];
-//            } while (usedTitles.contains(randomTitle));
-//
-//            list.add(new SearchDto(randomRank, randomTitle));
-//            usedRanks.add(randomRank);
-//            usedTitles.add(randomTitle);
-//        }
-//
-//        return list;
-//    }
-//
+
+    @RequestMapping("/getdata")
+    public Object getdata() {
+        List<CustDto> list = new ArrayList<>();
+        list.add(new CustDto("id01", "pwd01", "dowoon"));
+        list.add(new CustDto("id01", "pwd01", "dowoon"));
+        list.add(new CustDto("id01", "pwd01", "dowoon"));
+        list.add(new CustDto("id01", "pwd01", "dowoon"));
+
+        return list;
+    }
+    @RequestMapping("/getsearchrank")
+    public Object getsearchrank() {
+        List<SearchDto> list = new ArrayList<>();
+        Random random = new Random();
+        List<Integer> usedRanks = new ArrayList<>();
+        List<String> usedTitles = new ArrayList<>();
+        String[] titles = {"김원필", "윤도운", "박성진", "강영현", "양채연"};
+
+        for (int i = 0; i < 5; i++) {
+            int randomRank;
+            String randomTitle;
+            do {
+                randomRank = random.nextInt(5) + 1;
+            } while (usedRanks.contains(randomRank));
+
+            do {
+                randomTitle = titles[random.nextInt(titles.length)];
+            } while (usedTitles.contains(randomTitle));
+
+            list.add(new SearchDto(randomRank, randomTitle));
+            usedRanks.add(randomRank);
+            usedTitles.add(randomTitle);
+        }
+
+        return list;
+    }
+
 
 }

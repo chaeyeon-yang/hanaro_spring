@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <style>
     #geo3 > #map{
         width:500px;
@@ -7,9 +9,6 @@
     }
 </style>
 <script>
-
-
-
     let geo3 = {
         map:null,
         init:function(){
@@ -30,13 +29,20 @@
         },
         getshop:function(){
             //$.ajax();
+
+
+            $.ajax({
+                url: '<c:url value="/geo/getdata"/>',
+                success: function (datas) {
+                    geo3.display(datas)
+                }
+            })
             // lat, lng, title, img, target
-            var datas = [
-                {'lat':37.5547611,'lng':127.0654625,'title':'순대국','img':'국밥.jpeg','target':100},
-                {'lat':37.5747611,'lng':127.0554625,'title':'파스타','img':'파스타.jpeg','target':101},
-                {'lat':37.5147611,'lng':127.0154625,'title':'햄버거','img':'햄버거.jpeg','target':102},
-            ];
-            geo3.display(datas);
+            // var datas = [
+            //     {'lat':37.5547611,'lng':127.0654625,'title':'순대국','img':'국밥.jpeg','target':100},
+            //     {'lat':37.5747611,'lng':127.0554625,'title':'파스타','img':'파스타.jpeg','target':101},
+            //     {'lat':37.5147611,'lng':127.0154625,'title':'햄버거','img':'햄버거.jpeg','target':102},
+            // ];
         },
         display:function(datas){
             var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_p.png';
@@ -65,7 +71,7 @@
 
                 kakao.maps.event.addListener(marker, 'mouseover',mouseoverHandler(marker,infowindow));
                 kakao.maps.event.addListener(marker, 'mouseout',mouseoutHandler(marker,infowindow));
-                kakao.maps.event.addListener(marker, 'click',mouseclickHandler(item.target));
+                kakao.maps.event.addListener(marker, 'click',mouseclickHandler(item.id));
 
                 function mouseoverHandler(marker,infowindow){
                     return function(){
@@ -92,7 +98,6 @@
         geo3.init();
     });
 </script>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="container" id="geo3">
     <h2>GEO3 Page</h2>
     <div id="map"></div>

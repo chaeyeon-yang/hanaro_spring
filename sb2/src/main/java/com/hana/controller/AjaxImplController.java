@@ -2,6 +2,7 @@ package com.hana.controller;
 
 import com.hana.app.data.dto.CustDto;
 import com.hana.app.data.dto.SearchDto;
+import com.hana.app.data.dto.ShopDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +30,16 @@ public class AjaxImplController {
             result = "0";
         }
         return result;
+    }
+
+    @RequestMapping("/geo/getdata")
+    public Object geogetdata() {
+        List<ShopDto> list = new ArrayList<>();
+        list.add(new ShopDto(100,"순대국","국밥.jpeg",37.5547611, 127.0654625));
+        list.add(new ShopDto(101,"파스타","파스타.jpeg",37.5747611, 127.0554625));
+        list.add(new ShopDto(102, "햄버거","햄버거.jpeg", 37.5147611,127.0154625 ));
+
+        return list;
     }
 
     @RequestMapping("/getdata")

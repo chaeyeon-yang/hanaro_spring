@@ -13,18 +13,17 @@
     <title>Title</title>
 </head>
 <body>
-<h3>Some Links</h3>
-<p>Lorem ipsum dolor sit ame.</p>
+<h3>Chart</h3>
 <ul class="nav nav-pills flex-column">
-    <p>HTML</p>
+    <p>Chart</p>
     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/geo/geo1"/>">GEO1</a>
+        <a class="nav-link" href="<c:url value="/chart/chart1"/>">CHART1</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/geo/geo2"/>">GEO2</a>
+        <a class="nav-link" href="<c:url value="/chart/chart2"/>">CHART2</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/geo/geo3"/>">GEO3</a>
+        <a class="nav-link" href="<c:url value="/chart/chart3"/>">CHART3</a>
     </li>
 
 </ul>

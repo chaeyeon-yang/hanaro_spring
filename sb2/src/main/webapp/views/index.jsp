@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +8,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- KAKAO Map API -->
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=57527925f0a428a9f87c78617fc07348"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="<c:url value="/js/0327.js" />"></script>
+
 
     <style>
         .fakeimg {
@@ -73,13 +78,10 @@
                 <a class="nav-link" href="/ajax/">Ajax</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Geo</a>
+                <a class="nav-link" href="/geo/">Geo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Cust</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Item</a>
+                <a class="nav-link" href="/chart/">Chart</a>
             </li>
         </ul>
     </div>

@@ -21,6 +21,7 @@
             $('#get').click(()=>{
                 this.get();
             })
+            setInterval(() => {this.get}, 3000)
         },
         get: function () {
             $.ajax({

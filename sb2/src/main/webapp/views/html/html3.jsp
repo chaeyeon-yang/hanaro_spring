@@ -1,22 +1,40 @@
 <%--
   Created by IntelliJ IDEA.
   User: yangchaeyeon
-  Date: 2024/03/27
-  Time: 9:37 AM
+  Date: 2024/04/01
+  Time: 2:57 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-    <div class="container">
-        <h2>HTML3 PAGE</h2>
-        <h5>Title description, Sep 2, 2017</h5>
-        <div class="fakeimg">Fake Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-</body>
-</html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
+    let html3 = {
+        init: function () {
+        }
+    };
+    $(function () {
+        html3.init();
+    });
+</script>
+
+<div class="container">
+    <h1>html3</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>PWD</th>
+            <th>NAME</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="c" items="${custs}">
+            <tr>
+                <td>${c.id}</td>
+                <td>${c.pwd}</td>
+                <td>${c.name}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>

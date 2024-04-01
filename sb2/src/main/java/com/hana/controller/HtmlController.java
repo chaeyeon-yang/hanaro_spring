@@ -4,6 +4,7 @@ import com.hana.app.data.dto.CustDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,13 +45,24 @@ public class HtmlController {
 
         List<CustDto> list = new ArrayList<>();
         list.add(new CustDto("id01", "pwd01", "dowoon"));
-        list.add(new CustDto("id01", "pwd01", "dowoon"));
-        list.add(new CustDto("id01", "pwd01", "dowoon"));
-        list.add(new CustDto("id01", "pwd01", "dowoon"));
+        list.add(new CustDto("id02", "pwd01", "dowoon"));
+        list.add(new CustDto("id03", "pwd01", "dowoon"));
+        list.add(new CustDto("id04", "pwd01", "dowoon"));
 
         model.addAttribute("custs", list);
         model.addAttribute("left",dir+"left");
         model.addAttribute("center", dir+"html3");
+
+        return "index";
+    }
+    @RequestMapping("/get")
+    public String get(Model model, @RequestParam("id") String id) {
+        // id 값을 DB에 조회한다.
+        CustDto c = CustDto.builder().id(id).pwd("pwdxxx").name("chaeyeon").build();
+
+        model.addAttribute("cust", c);
+        model.addAttribute("left",dir+"left");
+        model.addAttribute("center", dir+"get");
 
         return "index";
     }

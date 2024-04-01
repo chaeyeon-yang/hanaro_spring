@@ -12,59 +12,49 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 public class MainController {
    @RequestMapping("/")
-   public String main() {return "index";}
-
-   @RequestMapping("/login")
-   public String login(Model model) {
-      model.addAttribute("center", "login");
+   public String main(){
       return "index";
    }
 
+   @RequestMapping("/login")
+   public String login(Model model){
+      model.addAttribute("center","login");
+      return "index";
+   }
    @RequestMapping("/logout")
-   public String logout(Model model, HttpSession httpSession) {
-      if (httpSession != null) {
+   public String logout(Model model, HttpSession httpSession){
+      if(httpSession != null){
          httpSession.invalidate();
       }
       return "index";
    }
-
    @RequestMapping("/loginimpl")
-   public String loginimpl(Model model, @RequestParam("id") String id, @RequestParam("pwd") String pwd, HttpSession httpSession) {
-      log.info("-----------------------------");
-      log.info(id+" "+pwd);
-
-      if (id.equals("qqq") && pwd.equals("111")) {
-//         httpSession.setMaxInactiveInterval(80000);
+   public String loginimpl(Model model,
+                           @RequestParam("id") String id,
+                           @RequestParam("pwd") String pwd, HttpSession httpSession){
+      if(id.equals("qqq") && pwd.equals("111")){
+         //httpSession.setMaxInactiveInterval(80000);
          httpSession.setAttribute("id", id);
-      } else {
-         log.info("로그인 실패");
+      }else{
+         model.addAttribute("center","loginfail");
       }
-      model.addAttribute("center", "login");
       return "index";
    }
 
-   @RequestMapping("/register")
-   public String register(Model model) {
-      model.addAttribute("center", "register");
-      return "index";
-   }
    @RequestMapping("/registerimpl")
-   public String registerimpl(Model model, CustDto custDto, HttpSession httpSession) {
-      log.info("-----------------------------");
-      log.info(custDto.getId()+" "+custDto.getPwd()+" "+custDto.getName());
-      if (custDto.getId().equals("qqq") && custDto.getPwd().equals("111")) {
-//         httpSession.setMaxInactiveInterval(80000);
-         httpSession.setAttribute("id", custDto.getId());
-         model.addAttribute("center", "center");
+   public String registerimpl(Model model,
+                              CustDto custDto, HttpSession httpSession){
+      log.info(custDto.getId());
+      log.info(custDto.getName());
+      httpSession.setAttribute("id", custDto.getId());
 
-      } else {
-         log.info("로그인 실패");
-         model.addAttribute("center", "register");
-
-      }
       return "index";
    }
-
+   @RequestMapping("/register")
+   public String register(Model model){
+      model.addAttribute("center","register");
+      return "index";
+   }
 
 
 }

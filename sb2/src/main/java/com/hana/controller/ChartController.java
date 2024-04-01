@@ -35,9 +35,23 @@ public class ChartController {
     }
 
     @RequestMapping("/chart3")
-    public String geo3(Model model) {
+    public String chart3(Model model) {
         model.addAttribute("left",dir+"left");
         model.addAttribute("center", dir+"chart3");
+
+        return "index";
+    }
+    @RequestMapping("/chart4")
+    public String chart4(Model model) {
+        model.addAttribute("left",dir+"left");
+        model.addAttribute("center", dir+"chart4");
+
+        return "index";
+    }
+    @RequestMapping("/chart5")
+    public String chart5(Model model) {
+        model.addAttribute("left",dir+"left");
+        model.addAttribute("center", dir+"chart5");
 
         return "index";
     }

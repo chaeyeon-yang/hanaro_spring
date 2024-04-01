@@ -1,8 +1,11 @@
 package com.hana.controller;
 
+import com.hana.app.data.dto.Chart2Dto;
 import com.hana.app.data.dto.CustDto;
 import com.hana.app.data.dto.SearchDto;
 import com.hana.app.data.dto.ShopDto;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +33,28 @@ public class AjaxImplController {
             result = "0";
         }
         return result;
+    }
+
+    @RequestMapping("/chart/getdata")
+    public Object chartgetdata() {
+        // JSONArray - json 안에 객체를 넣을 때
+        JSONArray ja = new JSONArray();
+        List<Chart2Dto> list = new ArrayList<>();
+        list.add(new Chart2Dto("S001",10,20,30,40,10,5));
+        list.add(new Chart2Dto("S002",13,19,24,30,20,15));
+        list.add(new Chart2Dto("S003",8,18,29,31,24,6));
+        list.add(new Chart2Dto("S004",9,12,19,10,8,9));
+
+        for (Chart2Dto c:list) {
+            JSONObject jo = new JSONObject();
+            // [{name, data:[]}]
+            jo.put("name", c.getName());
+            jo.put("data", c.getM());
+
+            ja.add(jo);
+        }
+
+        return ja;
     }
 
     @RequestMapping("/geo/getdata")

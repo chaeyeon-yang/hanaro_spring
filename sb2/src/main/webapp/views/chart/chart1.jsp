@@ -106,15 +106,7 @@
                     marker: {
                         symbol: 'square'
                     },
-                    data: [5.2, 5.7, 8.7, 13.9, 18.2, 21.4, 25.0, {
-                        y: 26.4,
-                        marker: {
-                            symbol: 'url(https://www.highcharts.com/samples/graphics/sun.png)'
-                        },
-                        accessibility: {
-                            description: 'Sunny symbol, this is the warmest point in the chart.'
-                        }
-                    }, 22.8, 17.5, 12.1, 7.6]
+                    data: [5.2, 5.7, 8.7, 13.9, 18.2, 21.4, 25.0, 22.8, 17.5, 12.1, 7.6]
 
                 }, {
                     name: 'Bergen',

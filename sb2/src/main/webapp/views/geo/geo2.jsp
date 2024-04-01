@@ -50,11 +50,67 @@
             // loc(s, b, j)
             var moveLatLon = new kakao.maps.LatLng(lat, lng);
             this.map.panTo(moveLatLon);
+            geo2.getgeodata();
         },
-        getgeodata: function (loc) {
+        getgeodata: function () {
 
+
+            $.ajax({
+                url: '<c:url value="/geo/seongsu/likeplace"/>',
+                success: function (datas) {
+                    geo2.display(datas)
+                }
+            })
         },
-        display: function (datas){}
+        display:function(datas){
+            var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_p.png';
+            $(datas).each(function(index, item){
+                // marker 생성
+                // window 생성
+                // event
+                var imageSize = new kakao.maps.Size(30, 30);
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+                var marketPosition = new kakao.maps.LatLng(item.lat,item.lng);
+                var marker = new kakao.maps.Marker({
+                    map: geo2.map,
+                    position: marketPosition,
+                    title:item.title,
+                    image: markerImage
+                });
+                // infowindow
+                var infoContent = '<p>'+item.title+'</p>';
+                infoContent += '<img style="width:50px;"  src="<c:url value="/img/'+item.img+'"/>">';
+
+                var infowindow = new kakao.maps.InfoWindow({
+                    content : infoContent,
+                    position: marketPosition
+                });
+
+                kakao.maps.event.addListener(marker, 'mouseover',mouseoverHandler(marker,infowindow));
+                kakao.maps.event.addListener(marker, 'mouseout',mouseoutHandler(marker,infowindow));
+                kakao.maps.event.addListener(marker, 'click',mouseclickHandler(item.id));
+
+                function mouseoverHandler(marker,infowindow){
+                    return function(){
+                        infowindow.open(geo2.map, marker);
+                    };
+                }
+
+                function mouseoutHandler(marker,infowindow){
+                    return function(){
+                        infowindow.close();
+                    };
+                }
+
+                function mouseclickHandler(target){
+                    return function(){
+                        location.href='<c:url value="/geo/shopdetail?shopid='+target+'" />';
+                    };
+                }
+
+            });
+        }
     }
 
     $(function () {

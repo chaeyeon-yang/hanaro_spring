@@ -42,6 +42,15 @@ public class AjaxImplController {
         return list;
     }
 
+    @RequestMapping("/geo/seongsu/likeplace")
+    public Object geogetlikeplace() {
+        List<ShopDto> list = new ArrayList<>();
+        list.add(new ShopDto(100,"고운돈카츠","고운돈카츠.jpeg",37.5447624, 127.054203));
+        list.add(new ShopDto(101,"소문난성수감자탕","파스타.jpeg",37.5428241, 127.0543732));
+
+        return list;
+    }
+
     @RequestMapping("/getdata")
     public Object getdata() {
         List<CustDto> list = new ArrayList<>();

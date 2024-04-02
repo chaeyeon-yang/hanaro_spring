@@ -17,3 +17,5 @@ app:
   dir:
     imgdir: /root/imgs/
     logdir: /root/logs/
+
+    # /root/logs/

@@ -1,37 +1,30 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yangchaeyeon
-  Date: 2024/03/27
-  Time: 9:37 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
-    #container {
-        width: 800px;
+    #container{
+        width: 600px;
         height: 500px;
         border: 2px solid red;
     }
 </style>
 <script>
     let chart2 = {
-        init:function(){
+        init: function () {
             $('#get').click(()=>{
                 this.get();
-            })
-            setInterval(() => {this.get}, 3000)
+            });
+            setInterval(()=>{this.get();},3000);
         },
-        get: function () {
+        get:function(){
             $.ajax({
-                url: '<c:url value="/chart/getdata"/>',
-                success: (data) => {
+                url:'<c:url value="/chart2" />',
+                success:(data)=>{
                     this.chart(data);
                 }
-            })
+            });
         },
-        chart: function (data) {
+        chart:function(data){
             Highcharts.chart('container', {
                 chart: {
                     type: 'spline'
@@ -72,21 +65,16 @@
                         }
                     }
                 },
-                series: data,
+                series: data
             });
-            alert('ok');
         }
     };
-    $(function(){
+    $(function () {
         chart2.init();
     });
 </script>
-<body>
-    <div class="container">
-        <h2>Chart2 Page</h2>
-        <button id="get" type="button" class="btn btn-primary">GET</button>
-
-        <div id="container"></div>
-    </div>
-</body>
-</html>
+<div class="container">
+    <h2>Chart2 Page</h2>
+    <button id="get" type="button" class="btn btn-primary">GET</button>
+    <div id="container"></div>
+</div>

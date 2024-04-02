@@ -10,7 +10,7 @@ class Sb2ApplicationTests {
 
     @Test
     void contextLoads() {
-        log.info("------------LOG------------");
+        log.info("----------LOG----------------");
     }
 
 }

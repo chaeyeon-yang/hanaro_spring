@@ -16,3 +16,11 @@ public class ShopDto {
     private double lat;
     private double lng;
 }
+
+
+
+
+
+
+
+

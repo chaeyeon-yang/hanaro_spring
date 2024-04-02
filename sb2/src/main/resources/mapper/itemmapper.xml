@@ -5,7 +5,7 @@
 <mapper namespace="com.hana.app.repository.ItemRepository">
 
     <select id="selectOne" parameterType="Integer" resultType="itemDto">
-        SELECT * FROM db_item WHERE item_id=#{id}
+        SELECT * FROM db_item WHERE item_id=#{itemId}
     </select>
     <select id="select" resultType="itemDto">
         SELECT * FROM db_item
@@ -14,7 +14,7 @@
         INSERT INTO db_item VALUES (0, #{itemName},#{itemPrice},#{imgName}, NOW(), NOW())
     </insert>
     <update id="update" parameterType="itemDto">
-        UPDATE db_item SET item_name=#{itemName},item_price=#{itemPrice}, img_name=#{imgName}, update_date=NOW() WHERE item_id=#{id}
+        UPDATE db_item SET item_name=#{itemName},item_price=#{itemPrice}, img_name=#{imgName}, update_date=NOW() WHERE item_id=#{itemId}
     </update>
     <delete id="delete" parameterType="Integer">
         DELETE FROM db_item WHERE item_id=#{id}

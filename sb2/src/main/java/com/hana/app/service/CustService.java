@@ -4,7 +4,6 @@ import com.hana.app.data.dto.CustDto;
 import com.hana.app.frame.HanaService;
 import com.hana.app.repository.CustRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

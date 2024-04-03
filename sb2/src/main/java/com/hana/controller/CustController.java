@@ -59,7 +59,20 @@ public class CustController {
     public String add(Model model) {
         model.addAttribute("left", dir+"left");
         model.addAttribute("center", dir+"add");
-        return "redirect:/cust/get";
+        return "index";
+    }
+
+    @RequestMapping("/addimpl")
+    public String addimpl(Model model, CustDto custDto) {
+        try {
+            custService.add(custDto);
+            model.addAttribute("left", dir+"left");
+            model.addAttribute("center", dir+"addimpl");
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+        return "index";
     }
 
     @RequestMapping("/detail")

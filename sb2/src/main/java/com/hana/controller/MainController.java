@@ -65,8 +65,9 @@ public class MainController {
 //        log.info(custDto.getName());
         try {
             custService.add(custDto);
-            httpSession.setAttribute("id", custDto.getId());
-
+            if (httpSession.getId() == null) {
+                httpSession.setAttribute("id", custDto.getId());
+            }
         } catch (Exception e) {
             model.addAttribute("center","registerfail");
         }

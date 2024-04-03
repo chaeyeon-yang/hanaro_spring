@@ -90,10 +90,10 @@
             </li>
             <c:if test="${id != null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cust</a>
+                    <a class="nav-link" href="<c:url value="/cust/"/>">Cust</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Item</a>
+                    <a class="nav-link" href="<c:url value="/item/"/>">Item</a>
                 </li>
             </c:if>
         </ul>

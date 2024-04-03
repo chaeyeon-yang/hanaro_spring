@@ -10,6 +10,9 @@
     <select id="select" resultType="addrDto">
         SELECT * FROM db_addr
     </select>
+    <select id="selectAddr" parameterType="String" resultType="addrDto">
+        SELECT * FROM db_addr WHERE cust_id=#{custId}
+    </select>
     <insert id="insert" parameterType="addrDto">
         INSERT INTO db_addr VALUES (0, #{addrName},#{addrDetail},#{custId})
     </insert>

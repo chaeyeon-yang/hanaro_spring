@@ -5,17 +5,7 @@
         color:red;
     }
 </style>
-<script>
-    $(document).ready(function(){
-        $('#ptag').text('Replace Text');
-        $('h5').click(function(){
-            alert('ok');
-            $(this).text('Click Event');
-        });
-    });
 
-
-</script>
 
 <div class="container">
     <h2>회원정보 조회</h2>

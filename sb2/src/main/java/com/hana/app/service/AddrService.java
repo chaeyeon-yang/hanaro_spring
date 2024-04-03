@@ -37,4 +37,9 @@ public class AddrService implements HanaService<Integer, AddrDto> {
     public List<AddrDto> get() throws Exception {
         return addrRepository.select();
     }
+
+    // 내 주소 id 리스트 받기
+    public List<AddrDto> getAddr(String id) throws Exception {
+        return addrRepository.selectAddr(id);
+    }
 }

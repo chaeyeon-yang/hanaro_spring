@@ -20,7 +20,7 @@ class SelectOneTests {
     void contextLoads() {
         try {
             CustDto custDto = null;
-            custDto = custService.get("id33");
+            custDto = custService.get("id88");
             if (custDto == null) {
                 log.info("-----------NULL-----------");
             }

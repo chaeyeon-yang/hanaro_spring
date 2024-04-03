@@ -18,7 +18,7 @@
     <a class="nav-link" href="<c:url value="/cust/"/>">전체 회원 리스트</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<c:url value="/cust/getOne"/>">회원 검색</a>
+    <a class="nav-link" href="<c:url value="/cust/search"/>">회원 검색</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="<c:url value="/cust/add"/>">회원 등록</a>

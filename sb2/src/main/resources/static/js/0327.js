@@ -88,3 +88,31 @@ let html2 = {
         $('#cust_tb > tbody').html(result);
     }
 };
+
+
+let search = {
+    url: '',
+    init: function (url) {
+        this.url = url;
+        $('#login_form > button').click(function () {
+            let id = $('#id').val();
+            if (id == '' || id == null) {
+                alert('ID를 입력 하세요');
+                $('#id').focus();
+                return;
+            }
+            $('#button-addon2').click(function(){
+                html2.display(datas);
+            });
+            login.send();
+        })
+
+    },
+    send: function () {
+        $('#searchForm').attr({
+            'method': 'post',
+            'action': this.url
+        });
+        $('#searchForm').submit();
+    }
+};

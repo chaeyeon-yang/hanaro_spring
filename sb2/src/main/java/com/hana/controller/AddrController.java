@@ -69,4 +69,23 @@ public class AddrController {
             throw new RuntimeException(e);
         }
     }
+
+    @RequestMapping("/add")
+    public String add(Model model) {
+        model.addAttribute("left", dir+"left");
+        model.addAttribute("center", dir+"add");
+        return "index";
+    }
+
+    @RequestMapping("/addimpl")
+    public String addimpl(Model model, @RequestParam("addrName") String addrName, @RequestParam("addrDetail") String addrDetail,  HttpSession httpSession) {
+        var userId = httpSession.getAttribute("id").toString();
+
+        try {
+            addrService.add(new AddrDto(0, addrName,addrDetail, userId));
+            return "redirect:/mypage/";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -88,3 +88,33 @@ let html2 = {
         $('#cust_tb > tbody').html(result);
     }
 };
+
+let addrRegister = {
+    url:'',
+    init:function(url){
+        this.url = url;
+        $(".addr_register > #addr_register_btn").click(function(){
+            let addrName = $('#addrName').val();
+            let addrDetail = $('#addrDetail').val();
+
+            if(addrName == '' || addrName == null){
+                alert('주소명을 입력 하세요');
+                $('#addrName').focus();
+                return;
+            }
+            if(addrDetail == '' || addrDetail == null){
+                alert('상세 주소를 입력 하세요');
+                $('#addrDetail').focus();
+                return;
+            }
+            addrRegister.send();
+        });
+    },
+    send:function(){
+        $('.addr_register').attr({
+            'method':'post',
+            'action':this.url
+        });
+        $('.addr_register').submit();
+    }
+};

@@ -9,7 +9,7 @@
         // JSON 배열을 반복하여 테이블 행을 추가합니다.
         addrJson.forEach(function(addr) {
             $('.table-striped tbody').empty().append(
-                '<tr><td>' + addr.addrId + '</td><td>' + addr.addrName + '</td><td>' + addr.addrDetail + '</td><td>' + addr.custId + '</td></tr>'
+                '<tr><td><a href="<c:url value="/mypage/detail"/>' + '?id=' + addr.addrId + '">' + addr.addrId + '</a></td><td>' + addr.addrName + '</td><td>' + addr.addrDetail + '</td><td>' + addr.custId + '</td></tr>'
             );
         });
     }

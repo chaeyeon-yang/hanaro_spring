@@ -1,0 +1,84 @@
+[2024-04-04 09:34:57:711729][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 51 mappings in 'requestMappingHandlerMapping'
+[2024-04-04 09:34:57:711746][restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /imgs/**, /logs/**] in 'resourceHandlerMapping'
+[2024-04-04 09:34:57:711749][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2024-04-04 09:34:57:711751][restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+[2024-04-04 09:34:57:712193][http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2024-04-04 09:34:57:712193][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+[2024-04-04 09:34:57:712193][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+[2024-04-04 09:34:57:712193][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+[2024-04-04 09:34:57:712196][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3a4ae3d3
+[2024-04-04 09:34:57:712197][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@348d0aea
+[2024-04-04 09:34:57:712197][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2024-04-04 09:34:57:712197][http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+[2024-04-04 09:34:57:712204][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/a.jpg", parameters={}
+[2024-04-04 09:34:57:712211][http-nio-80-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/root/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs]]
+[2024-04-04 09:34:57:712212][http-nio-80-exec-1] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+[2024-04-04 09:34:57:712212][http-nio-80-exec-1] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource a.jpg.]
+[2024-04-04 09:34:57:712212][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+[2024-04-04 09:34:57:712213][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2024-04-04 09:34:57:712214][http-nio-80-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+[2024-04-04 09:34:57:712221][http-nio-80-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2024-04-04 09:34:57:712223][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+[2024-04-04 09:34:58:712960][http-nio-80-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/a.jpg", parameters={}
+[2024-04-04 09:34:58:712962][http-nio-80-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/root/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs]]
+[2024-04-04 09:34:58:712963][http-nio-80-exec-4] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+[2024-04-04 09:34:58:712964][http-nio-80-exec-4] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource a.jpg.]
+[2024-04-04 09:34:58:712964][http-nio-80-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+[2024-04-04 09:34:58:712966][http-nio-80-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2024-04-04 09:34:58:712967][http-nio-80-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+[2024-04-04 09:34:58:712977][http-nio-80-exec-4] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2024-04-04 09:34:58:712980][http-nio-80-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+[2024-04-04 09:34:58:713598][http-nio-80-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/a.jpg", parameters={}
+[2024-04-04 09:34:58:713599][http-nio-80-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/root/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs]]
+[2024-04-04 09:34:58:713600][http-nio-80-exec-3] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+[2024-04-04 09:34:58:713601][http-nio-80-exec-3] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource a.jpg.]
+[2024-04-04 09:34:58:713601][http-nio-80-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+[2024-04-04 09:34:58:713602][http-nio-80-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2024-04-04 09:34:58:713603][http-nio-80-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+[2024-04-04 09:34:58:713616][http-nio-80-exec-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2024-04-04 09:34:58:713617][http-nio-80-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+[2024-04-04 09:34:59:714248][http-nio-80-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/a.jpg", parameters={}
+[2024-04-04 09:34:59:714250][http-nio-80-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/root/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs]]
+[2024-04-04 09:34:59:714250][http-nio-80-exec-5] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+[2024-04-04 09:34:59:714251][http-nio-80-exec-5] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource a.jpg.]
+[2024-04-04 09:34:59:714251][http-nio-80-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+[2024-04-04 09:34:59:714253][http-nio-80-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2024-04-04 09:34:59:714254][http-nio-80-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+[2024-04-04 09:34:59:714265][http-nio-80-exec-5] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2024-04-04 09:34:59:714266][http-nio-80-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+[2024-04-04 09:35:00:714819][http-nio-80-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/a.jpg", parameters={}
+[2024-04-04 09:35:00:714821][http-nio-80-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/root/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs]]
+[2024-04-04 09:35:00:714822][http-nio-80-exec-6] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+[2024-04-04 09:35:00:714822][http-nio-80-exec-6] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource a.jpg.]
+[2024-04-04 09:35:00:714823][http-nio-80-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+[2024-04-04 09:35:00:714824][http-nio-80-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2024-04-04 09:35:00:714828][http-nio-80-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+[2024-04-04 09:35:00:714841][http-nio-80-exec-6] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2024-04-04 09:35:00:714842][http-nio-80-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+[2024-04-04 09:35:00:715351][http-nio-80-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/a.jpg", parameters={}
+[2024-04-04 09:35:00:715353][http-nio-80-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/root/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs]]
+[2024-04-04 09:35:00:715353][http-nio-80-exec-2] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+[2024-04-04 09:35:00:715354][http-nio-80-exec-2] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource a.jpg.]
+[2024-04-04 09:35:00:715354][http-nio-80-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+[2024-04-04 09:35:00:715355][http-nio-80-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2024-04-04 09:35:00:715357][http-nio-80-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+[2024-04-04 09:35:00:715376][http-nio-80-exec-2] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2024-04-04 09:35:00:715377][http-nio-80-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+[2024-04-04 09:36:18:793435][http-nio-80-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/a.jpg", parameters={}
+[2024-04-04 09:36:18:793437][http-nio-80-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/root/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs]]
+[2024-04-04 09:36:18:793438][http-nio-80-exec-10] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+[2024-04-04 09:36:18:793438][http-nio-80-exec-10] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource a.jpg.]
+[2024-04-04 09:36:18:793438][http-nio-80-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+[2024-04-04 09:36:18:793439][http-nio-80-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2024-04-04 09:36:18:793440][http-nio-80-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+[2024-04-04 09:36:18:793446][http-nio-80-exec-10] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2024-04-04 09:36:18:793447][http-nio-80-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+[2024-04-04 09:36:39:814104][http-nio-80-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/imgs/a.jpg", parameters={}
+[2024-04-04 09:36:39:814105][http-nio-80-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:/root/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs]]
+[2024-04-04 09:36:39:814105][http-nio-80-exec-8] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+[2024-04-04 09:36:39:814105][http-nio-80-exec-8] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource a.jpg.]
+[2024-04-04 09:36:39:814106][http-nio-80-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+[2024-04-04 09:36:39:814106][http-nio-80-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2024-04-04 09:36:39:814107][http-nio-80-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+[2024-04-04 09:36:39:814112][http-nio-80-exec-8] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2024-04-04 09:36:39:814113][http-nio-80-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404

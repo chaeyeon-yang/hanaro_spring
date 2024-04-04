@@ -13,13 +13,15 @@
         </association>
     </resultMap>
     <select id="selectOne" parameterType="String" resultMap="adminRole">
-        SELECT u.id,u.pwd, r.role_id, r.role_name FROM admin_user u                                                                 On u.arole = r.role_id
+        SELECT u.id,u.pwd, r.role_id, r.role_name FROM admin_user u
+        INNER JOIN admin_role r
+        ON u.arole = r.role_id
         WHERE u.id = #{id}
     </select>
     <select id="select" resultMap="adminRole">
         SELECT u.id,u.pwd, r.role_id, r.role_name FROM admin_user u
         INNER JOIN admin_role r
-        On u.arole = r.role_id
+        ON u.arole = r.role_id
     </select>
     <!--    <insert id="insert" parameterType="custDto">-->
     <!--        INSERT INTO db_cust VALUES (#{id},#{pwd},#{name})-->

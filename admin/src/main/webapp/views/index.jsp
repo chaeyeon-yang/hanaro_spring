@@ -98,8 +98,12 @@
             Interface
         </div>
 
+
+
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <c:choose>
+        <c:when test="${sessionScope.admin.role.roleId == 1 || sessionScope.admin.role.roleId == 2}">
+            <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
@@ -114,8 +118,8 @@
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-wrench"></i>
@@ -130,7 +134,8 @@
                 </div>
             </div>
         </li>
-
+        </c:when>
+        </c:choose>
         <!-- Divider -->
         <hr class="sidebar-divider">
 

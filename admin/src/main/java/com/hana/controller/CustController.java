@@ -47,4 +47,14 @@ public class CustController {
         }
         return "index";
     }
+
+    @RequestMapping("/detailUpdate")
+    public String detailUpdate(Model model, CustDto custDto){
+        try {
+            custService.modify(custDto);
+            return "redirect:/cust/get";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

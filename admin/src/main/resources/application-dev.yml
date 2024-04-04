@@ -27,7 +27,7 @@ logging:
 
 app:
   dir:
-    imgdir: file:C:/project/imgs/
-    logdir: file:C:/project/logs/
+    imgdir: file:/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs/
+    logdir: file:/Users/yangchaeyeon/Documents/sb_thymeleaf_project/logs/
 
     #    file:/root/users/project/imgs/

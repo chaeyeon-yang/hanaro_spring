@@ -43,6 +43,25 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script>
+        let index = {
+            init: function () {
+                $('#login_form > button').click(() => {
+                    // let id = $('#id').val();
+                    // let pwd = $('#pwd').val();
+                    $('#login_form').attr({
+                        'action':'<c:url value="/loginimpl" />',
+                        'method':'POST'
+                    });
+                    $('#login_form').submit();
+                });
+            }
+        }
+        $(function () {
+            index.init();
+        })
+    </script>
 </head>
 
 <body id="page-top">
@@ -306,7 +325,7 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">${id}</span>
                                     <img class="img-profile rounded-circle"
                                          src="img/undraw_profile.svg">
                                 </a>

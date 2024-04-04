@@ -25,7 +25,7 @@ public class AdminService implements HanaService<String, AdminDto> {
 
     @Override
     public int modify(AdminDto adminDto) throws Exception {
-        return 0;
+        return adminRepository.update(adminDto);
     }
 
     @Override

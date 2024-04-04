@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AddrService implements HanaService<Integer, AddrDto> {
+public class  AddrService implements HanaService<Integer, AddrDto> {
     final AddrRepository addrRepository;
 
     @Override

@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 @Mapper
 public interface AddrRepository extends HanaRepository<Integer, AddrDto> {
+    List<AddrDto> selectAddr(String k);
 }

@@ -43,7 +43,7 @@ dependencies {
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
 
-    // Mysql handler
+    // Mysql handler - LocalDate
     implementation 'org.mybatis:mybatis-typehandlers-jsr310:1.0.2'
 
     // JSON

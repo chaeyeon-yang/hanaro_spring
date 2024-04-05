@@ -3,6 +3,7 @@ package com.hana.controller;
 import com.hana.app.data.dto.CustDto;
 import com.hana.app.service.CustService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,6 @@ public class CustController {
     public String get(Model model) throws Exception {
         // Database에서 데이터를 가지고 온다.
         List<CustDto> list = new ArrayList<>();
-
         try {
             list = custService.get();
             model.addAttribute("custs",list);
@@ -75,13 +75,13 @@ public class CustController {
     }
 
     @RequestMapping("/addimpl")
-    public String addimpl(Model model,CustDto custDto){
+    public String addimpl(Model model,CustDto custDto) throws Exception{
 
         try {
             custService.add(custDto);
             return "redirect:/cust/detail?id="+custDto.getId();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (DuplicateKeyException e) {
+            throw new DuplicateKeyException("이미 있는 회원입니다.");
         }
     }
 }

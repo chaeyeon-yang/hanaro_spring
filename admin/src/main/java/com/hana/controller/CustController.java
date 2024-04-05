@@ -67,4 +67,21 @@ public class CustController {
             throw new RuntimeException(e);
         }
     }
+
+    @RequestMapping("/add")
+    public String add(Model model){
+        model.addAttribute("center",dir+"add");
+        return "index";
+    }
+
+    @RequestMapping("/addimpl")
+    public String addimpl(Model model,CustDto custDto){
+
+        try {
+            custService.add(custDto);
+            return "redirect:/cust/detail?id="+custDto.getId();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

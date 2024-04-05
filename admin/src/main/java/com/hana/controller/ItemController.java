@@ -2,11 +2,15 @@ package com.hana.controller;
 
 import com.hana.app.data.dto.ItemDto;
 import com.hana.app.service.ItemService;
+import com.hana.util.FileUploadUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +18,15 @@ import java.util.List;
 @Controller
 @RequestMapping("/item")
 @RequiredArgsConstructor
+@Slf4j
 public class ItemController {
 
     private final ItemService itemService;
     String dir = "item/";
+
+    @Value("${app.dir.uploadimgdir}")
+    String imgdir;
+
     @RequestMapping("/get")
     public String get(Model model) throws Exception{
         List<ItemDto> list = new ArrayList<>();
@@ -43,5 +52,24 @@ public class ItemController {
             throw new Exception("EI0001");
         }
         return "index";
+    }
+
+    @RequestMapping("/add")
+    public String add(Model model) {
+        model.addAttribute("center", dir+"add");
+
+        return "index";
+    }
+
+    @RequestMapping("/addimpl")
+    public String addimpl(Model model, ItemDto itemDto) throws Exception {
+        itemDto.setImgName(itemDto.getImage().getOriginalFilename());
+        itemService.add(itemDto);
+
+        // 이미지 저장 (/imgs)
+        FileUploadUtil.saveFile(itemDto.getImage(), imgdir);
+
+        model.addAttribute("center", dir+"add");
+        return "redirect:/item/get";
     }
 }

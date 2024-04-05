@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -47,10 +46,10 @@
                     </tfoot>
                     <tbody>
                     <c:forEach var="item" items="${itemlist}">
-                        <img style="width: 50px" src="<c:url value="/imgs/"/>/${item.imgName}">
                         <tr>
                             <td>
                                 <a href="<c:url value="/item/detail"/>?id=${item.itemId}">
+                                    <img style="width: 50px" src="<c:url value="/imgs/"/>/${item.imgName}">
                                 </a>
                             </td>
                             <td>${item.itemId}</td>

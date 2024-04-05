@@ -101,8 +101,8 @@
 
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <c:choose>
-        <c:when test="${sessionScope.admin.role.roleId == 1 || sessionScope.admin.role.roleId == 2}">
+
+        <c:if test="${sessionScope.admin.role.roleId == 1 || sessionScope.admin.role.roleId == 2}">
             <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
@@ -134,8 +134,8 @@
                 </div>
             </div>
         </li>
-        </c:when>
-        </c:choose>
+        </c:if>
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 

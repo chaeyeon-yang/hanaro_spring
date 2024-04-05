@@ -12,24 +12,27 @@
         url:'',
         init:function(url){
             this.url = url;
-            $('#register_form > button').click(function(){
-                let id = $('#id').val();
-                let pwd = $('#pwd').val();
-                let name = $('#name').val();
-
-                detailUpdate.send();
+            $('#register_form > #modify').click(function(){
+                this.send();
+            });
+            $('#register_form > #delete').click(function(){
+                let c = confirm('삭제하기겠습니까?');
+                if(c == true){
+                    let id = $('#id').val();
+                    location.href = '<c:url value="/cust/delete"/>?id='+id;
+                }
             });
         },
         send:function(){
             $('#register_form').attr({
                 'method':'post',
-                'action':this.url
+                'action': '<c:url value="/cust/detailUpdate"/>'
             });
             $('#register_form').submit();
-        }
+        },
     };
     $(function(){
-        detailUpdate.init('<c:url value="/cust/detailUpdate"/>');
+        detailUpdate.init();
     });
 </script>
 
@@ -47,7 +50,7 @@
                 <form id="register_form">
                     <div class="form-group">
                         <label for="id">ID:</label>
-                        <input type="text" value="${cust.id}" class="form-control" id="id" placeholder="Enter id" name="id">
+                        <input readonly="readonly" type="text" value="${cust.id}" class="form-control" id="id" placeholder="Enter id" name="id">
 
                     </div>
                     <div class="form-group">
@@ -60,7 +63,8 @@
                         <input type="text" value="${cust.name}"  class="form-control" id="name" placeholder="Enter name" name="name">
 
                     </div>
-                    <button type="button" class="btn btn-primary">REGISTER</button>
+                    <button type="button" class="btn btn-primary" id="modify">MODIFY</button>
+                    <button type="button" class="btn btn-primary" id="delete">DELETE</button>
                 </form>
             </div>
         </div>

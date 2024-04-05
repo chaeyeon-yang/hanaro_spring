@@ -20,7 +20,7 @@ public class AdminService implements HanaService<String, AdminDto> {
 
     @Override
     public int del(String s) throws Exception {
-        return 0;
+        return adminRepository.delete(s);
     }
 
     @Override

@@ -57,4 +57,14 @@ public class CustController {
             throw new RuntimeException(e);
         }
     }
+
+    @RequestMapping("/delete")
+    public String delete(@RequestParam("id") String id){
+        try {
+            custService.del(id);
+            return "redirect:/cust/get";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

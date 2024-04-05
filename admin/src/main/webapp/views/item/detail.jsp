@@ -8,15 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><script>
-    let detailUpdate = {
+    let item_detail = {
         init:function(){
-            $('#register_form > #modify').click(function(){
+            $('#item_update_form > #update').click(() => {
                 let c = confirm('수정하시겠습니까?');
                 if(c == true){
-                    detailUpdate.send();
+                    this.send();
                 }
             });
-            $('#register_form > #delete').click(function(){
+            $('#item_update_form > #delete').click(() => {
                 let c = confirm('삭제하시겠습니까?');
                 if(c == true){
                     let id = $('#id').val();
@@ -25,15 +25,16 @@
             });
         },
         send:function(){
-            $('#register_form').attr({
+            $('#item_update_form').attr({
                 'method':'post',
-                'action': '<c:url value="/cust/detailUpdate"/>'
+                'enctype': 'multipart/form-data',
+                'action': '<c:url value="/item/updateimpl"/>'
             });
-            $('#register_form').submit();
+            $('#item_update_form').submit();
         },
     };
     $(function(){
-        detailUpdate.init();
+        item_detail.init();
     });
 </script>
 
@@ -48,21 +49,26 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <form id="register_form">
+                <form id="item_update_form">
                     <div class="form-group">
-                        <label for="id">ID:</label>
-                        <input readonly="readonly" type="text" value="${item.itemId}" class="form-control" id="id" placeholder="Enter id" name="id">
+                        <label for="itemId">ID:</label>
+                        <input readonly="readonly" type="text" value="${item.itemId}" class="form-control" id="itemId" placeholder="Enter id" name="itemId">
                     </div>
                     <div class="form-group">
-                        <label for="name">NAME:</label>
-                        <input type="text"  value="${item.itemName}"  class="form-control" id="name" placeholder="Enter name" name="name">
+                        <label for="itemName">NAME:</label>
+                        <input type="text"  value="${item.itemName}"  class="form-control" id="itemName" placeholder="Enter name" name="itemName">
                     </div>
                     <div class="form-group">
-                        <label for="price">PRICE:</label>
-                        <input type="text" value="${item.itemPrice}"  class="form-control" id="price" placeholder="Enter price" name="price">
+                        <label for="itemPrice">PRICE:</label>
+                        <input type="text" value="${item.itemPrice}"  class="form-control" id="itemPrice" placeholder="Enter price" name="itemPrice">
                     </div>
                     <div class="form-group">
                         <img style="width: 200px" src="<c:url value="/imgs/"/>/${item.imgName}">
+                        <input type="hidden" name="imgName" value="${item.imgName}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="newImage">New Image:</label>
+                        <input type="file"  class="form-control" id="newImage" placeholder="Enter newImage" name="image">
                     </div>
                     <div class="form-group">
                         <div>등록일:
@@ -75,7 +81,7 @@
                             <fmt:formatDate pattern="yyyy년 MM월 dd일" value="${ parsedDateTime2 }" />
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" id="modify">MODIFY</button>
+                    <button type="button" class="btn btn-primary" id="update">UPDATE</button>
                     <button type="button" class="btn btn-primary" id="delete">DELETE</button>
                 </form>
             </div>

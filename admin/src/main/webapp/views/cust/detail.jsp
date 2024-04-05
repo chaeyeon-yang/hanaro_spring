@@ -9,14 +9,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
     let detailUpdate = {
-        url:'',
-        init:function(url){
-            this.url = url;
+        init:function(){
             $('#register_form > #modify').click(function(){
-                this.send();
+                let c = confirm('수정하시겠습니까?');
+                if(c == true){
+                    detailUpdate.send();
+                }
             });
             $('#register_form > #delete').click(function(){
-                let c = confirm('삭제하기겠습니까?');
+                let c = confirm('삭제하시겠습니까?');
                 if(c == true){
                     let id = $('#id').val();
                     location.href = '<c:url value="/cust/delete"/>?id='+id;

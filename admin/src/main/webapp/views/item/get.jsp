@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="container-fluid">
 
@@ -46,12 +47,19 @@
                     </tfoot>
                     <tbody>
                     <c:forEach var="item" items="${itemlist}">
+                        <img style="width: 50px" src="<c:url value="/imgs/"/>/${item.imgName}">
                         <tr>
-                            <td><img style="width: 50px" src="<c:url value="/imgs/"/>/${item.imgName}"></td>
+                            <td>
+                                <a href="<c:url value="/item/detail"/>?id=${item.itemId}">
+                                </a>
+                            </td>
                             <td>${item.itemId}</td>
                             <td>${item.itemName}</td>
-                            <td>${item.itemPrice}</td>
-                            <td>${item.regDate}</td>
+                            <td>
+                            <fmt:formatNumber type="number" pattern="###,###원" value="${item.itemPrice}" /></td>
+                            <td>
+                                ${item.regDate}
+                            </td>
                             <td>${item.updateDate}</td>
                         </tr>
                     </c:forEach>

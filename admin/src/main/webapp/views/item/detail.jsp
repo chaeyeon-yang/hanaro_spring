@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><script>
     let detailUpdate = {
         init:function(){
             $('#register_form > #modify').click(function(){
@@ -65,8 +65,15 @@
                         <img style="width: 200px" src="<c:url value="/imgs/"/>/${item.imgName}">
                     </div>
                     <div class="form-group">
-                        <div>등록일: ${item.regDate}</div>
-                        <div>수정일: ${item.updateDate}</div>
+                        <div>등록일:
+                            <fmt:parseDate value="${item.regDate}"
+                                           pattern="yyyy-MM-dd" var="parsedDateTime2" type="both" />
+                            <fmt:formatDate pattern="yyyy년 MM월 dd일" value="${ parsedDateTime2 }" /></div>
+                        <div>수정일:
+                            <fmt:parseDate value="${item.updateDate}"
+                                           pattern="yyyy-MM-dd" var="parsedDateTime2" type="both" />
+                            <fmt:formatDate pattern="yyyy년 MM월 dd일" value="${ parsedDateTime2 }" />
+                        </div>
                     </div>
                     <button type="button" class="btn btn-primary" id="modify">MODIFY</button>
                     <button type="button" class="btn btn-primary" id="delete">DELETE</button>

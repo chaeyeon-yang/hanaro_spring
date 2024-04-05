@@ -47,7 +47,7 @@
                     <tbody>
                     <c:forEach var="item" items="${itemlist}">
                         <tr>
-                            <td>${item.imgName}</td>
+                            <td><img style="width: 50px" src="<c:url value="/imgs/"/>/${item.imgName}"></td>
                             <td>${item.itemId}</td>
                             <td>${item.itemName}</td>
                             <td>${item.itemPrice}</td>

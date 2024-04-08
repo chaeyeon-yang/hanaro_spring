@@ -12,26 +12,22 @@
 </style>
 <script>
     $(function(){
-        register.init('<c:url value="/registerimpl"/>');
+        boardRegister.init();
     });
 </script>
 <div class="container">
     <h2>게시글 작성</h2>
-    <form id="register_form">
+    <form id="board_register_form">
         <div class="form-group">
-            <label for="id">ID:</label>
-            <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요." name="title">
 
         </div>
         <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+            <label for="content">내용</label>
+            <textarea rows="8" class="form-control" id="content" placeholder="내용을 입력하세요." name="content"></textarea>
+        </div>
 
-        </div>
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
-        </div>
-        <button type="button" class="btn">REGISTER</button>
+        <button type="button" class="btn">게시하기</button>
     </form>
 </div>

@@ -4,6 +4,7 @@ import com.hana.app.data.dto.BoardDto;
 import com.hana.app.data.dto.ItemDto;
 import com.hana.app.service.BoardService;
 import com.hana.app.service.ItemService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,5 +37,14 @@ public class BoardController {
         model.addAttribute("center",dir+"add");
 
         return "index";
+    }
+    @RequestMapping("/addimpl")
+    public String addimpl(Model model, @RequestParam("title") String title, @RequestParam("content") String content, HttpSession httpSession) throws Exception {
+        String userId = httpSession.getAttribute("id").toString();
+        BoardDto newBoard = BoardDto.builder().custId(userId).boardTitle(title).boardContent(content).build();
+        boardService.add(newBoard);
+        model.addAttribute("center",dir+"get");
+
+        return "redirect:/board/get";
     }
 }

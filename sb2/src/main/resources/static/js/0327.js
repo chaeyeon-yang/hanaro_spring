@@ -118,3 +118,35 @@ let addrRegister = {
         $('.addr_register').submit();
     }
 };
+
+let boardRegister = {
+    init:function(){
+        $('#board_register_form > button').click(function(){
+
+            let c = confirm('게시하시겠습니까?');
+            if(c == true){
+                let title = $('#title').val();
+                let content = $('#content').val();
+                if(title == '' || title == null){
+                    alert('제목을 입력 하세요');
+                    $('#title').focus();
+                    return;
+                }
+                if(content == '' || content == null){
+                    alert('내용을 입력 하세요');
+                    $('#content').focus();
+                    return;
+                }
+            }
+
+            boardRegister.send();
+        });
+    },
+    send:function(){
+        $('#board_register_form').attr({
+            'method':'post',
+            'action': '/board/addimpl'
+        });
+        $('#board_register_form').submit();
+    }
+};

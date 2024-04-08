@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
     p{
         color:red;
@@ -26,7 +27,9 @@
                 <td><a href="<c:url value="/board/detail"/>?id=${b.boardId}">${b.boardId}</a></td>
                 <td>${b.custId}</td>
                 <td>${b.boardTitle}</td>
-                <td>${b.boardUpdate}</td>
+                <td><fmt:parseDate value="${b.boardUpdate}"
+                                   pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+                    <fmt:formatDate pattern="yyyy년 MM월 dd일 HH시 mm분" value="${ parsedDateTime }" /></td>
                 <td>${b.boardCnt}</td>
             </tr>
         </c:forEach>

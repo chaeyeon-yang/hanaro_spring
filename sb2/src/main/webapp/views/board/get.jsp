@@ -23,7 +23,7 @@
         <tbody>
         <c:forEach items="${boardList}" var="b">
             <tr>
-                <td><a href="<c:url value="/html/get"/>?id=${b.boardId}">${b.boardId}</a></td>
+                <td><a href="<c:url value="/board/detail"/>?id=${b.boardId}">${b.boardId}</a></td>
                 <td>${b.custId}</td>
                 <td>${b.boardTitle}</td>
                 <td>${b.boardUpdate}</td>

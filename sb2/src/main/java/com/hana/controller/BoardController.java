@@ -47,4 +47,14 @@ public class BoardController {
 
         return "redirect:/board/get";
     }
+
+    @RequestMapping("/detail")
+    public String detail(Model model, @RequestParam("id") Integer id) throws Exception {
+        BoardDto board = null;
+        board = boardService.get(id);
+        model.addAttribute("board", board);
+        model.addAttribute("center",dir+"detail");
+
+        return "index";
+    }
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Random;
@@ -92,5 +93,16 @@ public class MainController {
     public String register(Model model){
         model.addAttribute("center","register");
         return "index";
+    }
+
+    @ResponseBody
+    @RequestMapping("/registercheckid")
+    public Object registercheckid(Model model, @RequestParam("id") String id) throws Exception {
+        String result = "0";
+        CustDto custDto = custService.get(id);
+        if(custDto == null){
+            result = "1";
+        }
+        return result;
     }
 }

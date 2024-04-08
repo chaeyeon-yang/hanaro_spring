@@ -150,3 +150,4 @@ let boardRegister = {
         $('#board_register_form').submit();
     }
 };
+

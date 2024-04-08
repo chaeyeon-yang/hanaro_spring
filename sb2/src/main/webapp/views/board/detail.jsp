@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <style>
     .btn {
@@ -27,20 +28,20 @@
             $('#board_update_form > #update_btn').click(() => {
                 let c = confirm('수정하시겠습니까?');
                 if(c == true){
-                    let title = $('#title').val();
-                    let content = $('#content').val();
+                    let title = $('#boardTitle').val();
+                    let content = $('#boardContent').val();
                     if(title == '' || title == null){
                         alert('제목을 입력 하세요');
-                        $('#title').focus();
+                        $('#boardTitle').focus();
                         return;
                     }
                     if(content == '' || content == null){
                         alert('내용을 입력 하세요');
-                        $('#content').focus();
+                        $('#boardContent').focus();
                         return;
                     }
                 }
-                boardUpdate.send();
+                this.send();
             });
             $('#board_update_form > #delete_btn').click(() => {
                 let c = confirm('삭제하시겠습니까?');
@@ -67,18 +68,28 @@
 <div class="container detail">
     <form id="board_update_form">
         <div class="form-group">
-            <label for="title">제목</label>
-            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요." name="title" value="${board.boardTitle}">
+            <label for="boardTitle">제목</label>
+            <input type="text" class="form-control" id="boardTitle" placeholder="제목을 입력하세요." name="boardTitle" value="${board.boardTitle}">
         </div>
         <div class="form-group">
-            <label for="content">내용</label>
-            <textarea rows="8" class="form-control" id="content" placeholder="내용을 입력하세요." name="content">${board.boardContent}</textarea>
+            <label for="boardContent">내용</label>
+            <textarea rows="8" class="form-control" id="boardContent" placeholder="내용을 입력하세요." name="boardContent">${board.boardContent}</textarea>
         </div>
         <div class="form-group">
             <label for="custId">글쓴이</label>
-            <input readonly="readonly" type="text" class="form-control" id="custId"  name="title" value="${board.custId}">
+            <input readonly="readonly" type="text" class="form-control" id="custId"  name="custId" value="${board.custId}">
         </div>
         <input type="hidden" class="form-control" name="boardId" value="${board.boardId}">
+        <p>
+            <fmt:parseDate value="${board.boardRegdate}"
+                           pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+            <fmt:formatDate pattern="yyyy년 MM월 dd일 HH시 mm분" value="${ parsedDateTime }" />
+        </p>
+        <p>
+            <fmt:parseDate value="${board.boardUpdate}"
+                           pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+            <fmt:formatDate pattern="yyyy년 MM월 dd일 HH시 mm분" value="${ parsedDateTime }" />
+        </p>
 
         <c:if test="${sessionScope.id == board.custId}">
             <button type="button" class="btn" id="update_btn">수정하기</button>

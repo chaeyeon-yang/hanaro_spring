@@ -62,10 +62,8 @@ public class BoardController {
     }
 
     @RequestMapping("/update")
-    public String update(Model model,@RequestParam("title") String title, @RequestParam("content") String content, HttpSession httpSession) throws Exception {
-        String userId = httpSession.getAttribute("id").toString();
-        BoardDto newBoard = BoardDto.builder().boardTitle(title).boardContent(content).build();
-        boardService.modify(newBoard);
+    public String update(Model model,BoardDto boardDto) throws Exception {
+        boardService.modify(boardDto);
         model.addAttribute("center",dir+"detail");
 
         return "redirect:/board/get";

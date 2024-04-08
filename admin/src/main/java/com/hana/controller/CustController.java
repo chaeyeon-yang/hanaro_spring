@@ -76,12 +76,7 @@ public class CustController {
 
     @RequestMapping("/addimpl")
     public String addimpl(Model model,CustDto custDto) throws Exception{
-
-        try {
-            custService.add(custDto);
-            return "redirect:/cust/detail?id="+custDto.getId();
-        } catch (DuplicateKeyException e) {
-            throw new DuplicateKeyException("이미 있는 회원입니다.");
-        }
+        custService.add(custDto);
+        return "redirect:/cust/detail?id="+custDto.getId();
     }
 }

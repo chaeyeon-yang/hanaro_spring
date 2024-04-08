@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class CustomExceptionController {
     @ExceptionHandler(Exception.class)
     public String except(Exception e, Model model) {
-        model.addAttribute("msg", e.getMessage());
+        model.addAttribute("msg", "DuplicateKeyException:");
         model.addAttribute("center","error");
         return "index";
     }

@@ -49,12 +49,31 @@ public class BoardController {
     }
 
     @RequestMapping("/detail")
-    public String detail(Model model, @RequestParam("id") Integer id) throws Exception {
+    public String detail(Model model, @RequestParam("id") Integer id, HttpSession httpSession) throws Exception {
         BoardDto board = null;
         board = boardService.get(id);
+        if (httpSession!=null && !board.getCustId().equals(httpSession.getAttribute("id"))) {
+            boardService.cntUpdate(id);
+        }
         model.addAttribute("board", board);
         model.addAttribute("center",dir+"detail");
 
         return "index";
+    }
+
+    @RequestMapping("/update")
+    public String update(Model model,@RequestParam("title") String title, @RequestParam("content") String content, HttpSession httpSession) throws Exception {
+        String userId = httpSession.getAttribute("id").toString();
+        BoardDto newBoard = BoardDto.builder().boardTitle(title).boardContent(content).build();
+        boardService.modify(newBoard);
+        model.addAttribute("center",dir+"detail");
+
+        return "redirect:/board/get";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(Model model, @RequestParam("id") int id) throws Exception {
+        boardService.del(id);
+        return "redirect:/board/get";
     }
 }

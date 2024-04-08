@@ -13,13 +13,20 @@
     <select id="selectAddr" parameterType="String" resultType="boardDto">
         SELECT * FROM db_board WHERE cust_id=#{custId}
     </select>
+    <select id="getRank" parameterType="String" resultType="boardDto">
+        select * from db_board order by board_cnt desc limit 3
+    </select>
     <insert id="insert" parameterType="boardDto">
         INSERT INTO db_board VALUES (0, #{custId},#{boardTitle},#{boardContent}, NOW(), NOW(), 0)
     </insert>
     <update id="update" parameterType="boardDto">
         UPDATE db_board SET board_title = #{boardTitle}, board_content=#{boardContent}, board_update = NOW() WHERE board_id=#{boardId}
     </update>
+    <update id="cntUpdate" parameterType="Integer">
+        update db_board set board_cnt = board_cnt +1
+        where board_id = #{id}
+    </update>
     <delete id="delete" parameterType="Integer">
-        DELETE FROM db_addr WHERE board_id=#{boardrId}
+        DELETE FROM db_board WHERE board_id=#{id}
     </delete>
 </mapper>

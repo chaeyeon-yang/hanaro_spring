@@ -66,9 +66,10 @@ public class MainController {
                 throw new Exception();
             }
             httpSession.setAttribute("id", id);
-        } catch (Exception e) {
-            model.addAttribute("center","loginfail");
-//            throw new RuntimeException(e);
+        } catch (Exception e){
+            model.addAttribute("msg","ID또는 PWD가 틀렸습니다.");
+            model.addAttribute("center","login");
+            //throw new RuntimeException(e);
         }
 
         return "index";

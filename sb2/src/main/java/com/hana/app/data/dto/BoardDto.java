@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -22,4 +23,5 @@ public class BoardDto {
     private int boardCnt;
     // 조회 시 comment 개수 확인!
     private int commentCnt;
+    private List<CommentDto> commentList;
 }

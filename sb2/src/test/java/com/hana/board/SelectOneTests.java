@@ -18,7 +18,7 @@ class SelectOneTests {
     @Test
     void contextLoads() {
         try {
-            boardService.get(1);
+            boardService.get(3);
             log.info("----------OK----------------");
         } catch (Exception e) {
             if(e instanceof SQLException){

@@ -96,4 +96,26 @@
             <button type="button" class="btn" id="delete_btn">삭제하기</button>
         </c:if>
     </form>
+    <%--  Comment List  --%>
+    <table class="table table-striped" id="comment_table">
+        <thead>
+        <tr>
+            <th>CustID</th>
+            <th>Content</th>
+            <th>RegDate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${board.commentList}" var="c">
+            <tr>
+                <td>${c.custId}</td>
+                <td>${c.commentContent}</td>
+                <td><fmt:parseDate value="${c.commentRegdate}"
+                                   pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+                    <fmt:formatDate pattern="yyyy년 MM월 dd일 HH시 mm분" value="${ parsedDateTime }" /></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
 </div>

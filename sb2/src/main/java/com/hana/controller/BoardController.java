@@ -1,11 +1,10 @@
 package com.hana.controller;
 
 import com.hana.app.data.dto.BoardDto;
-import com.hana.app.data.dto.ItemDto;
 import com.hana.app.service.BoardService;
-import com.hana.app.service.ItemService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +15,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/board")
 @RequiredArgsConstructor
+@Slf4j
 public class BoardController {
     String dir = "board/";
 
@@ -52,6 +52,8 @@ public class BoardController {
     public String detail(Model model, @RequestParam("id") Integer id, HttpSession httpSession) throws Exception {
         BoardDto board = null;
         board = boardService.get(id);
+        log.info("%%%%");
+        board.getCommentList().stream().forEach(c -> log.info((c.toString())));
         if (httpSession!=null && !board.getCustId().equals(httpSession.getAttribute("id"))) {
             boardService.cntUpdate(id);
         }

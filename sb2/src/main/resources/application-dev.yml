@@ -30,5 +30,6 @@ app:
     imgdir: file:/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs/ # 화면 출력용
     uploadimgdir: /Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs/ # 파일 Write 용
     logdir: file:/Users/yangchaeyeon/Documents/sb_thymeleaf_project/logs/
-
+  wkey:
+    "3JjM4ywSiOm68eVL9D4idMkcUiZ5GKlKWAl1H44IotvQ5ypCVmj%2ByLqMeSXwP4c3ckD0bo7iCyN8JkOwgtkINg%3D%3D"
     # /root/logs/

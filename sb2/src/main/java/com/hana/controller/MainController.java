@@ -4,6 +4,7 @@ import com.hana.app.data.dto.BoardDto;
 import com.hana.app.data.dto.CustDto;
 import com.hana.app.service.BoardService;
 import com.hana.app.service.CustService;
+import com.hana.util.WeatherUtil;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Random;
 
@@ -23,6 +26,8 @@ public class MainController {
 
     final CustService custService;
     final BoardService boardService;
+
+    String wkey;
 
     @RequestMapping("/")
     public String main(Model model) throws Exception {
@@ -105,4 +110,11 @@ public class MainController {
         }
         return result;
     }
+
+    @RequestMapping("/wh")
+    @ResponseBody
+    public Object wh(Model model) throws IOException, ParseException, org.json.simple.parser.ParseException {
+        return WeatherUtil.getWeather("109", wkey);
+    }
+
 }

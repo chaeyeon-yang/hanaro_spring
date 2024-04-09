@@ -23,4 +23,7 @@
   <li class="nav-item">
     <a class="nav-link" href="<c:url value="/cust/add"/>">회원 등록</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<c:url value="/cust/allpage?pageNo=1"/>">페이징</a>
+  </li>
 </ul>

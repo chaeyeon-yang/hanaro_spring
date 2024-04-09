@@ -1,7 +1,10 @@
 package com.hana.app.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.hana.app.data.dto.AddrDto;
 import com.hana.app.data.dto.BoardDto;
+import com.hana.app.data.dto.CustDto;
 import com.hana.app.frame.HanaService;
 import com.hana.app.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -46,5 +49,10 @@ public class BoardService implements HanaService<Integer, BoardDto> {
 
     public List<BoardDto> getRank() throws Exception {
         return boardRepository.getRank();
+    }
+
+    public Page<BoardDto> getPage(int pageNo) throws Exception {
+        PageHelper.startPage(pageNo, 3);; //3: 한 화면에 출력되는 개수
+        return boardRepository.getPage();
     }
 }

@@ -1,5 +1,6 @@
 package com.hana.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.hana.app.data.dto.BoardDto;
 import com.hana.app.service.BoardService;
 import jakarta.servlet.http.HttpSession;
@@ -48,20 +49,45 @@ public class BoardController {
         return "redirect:/board/get";
     }
 
-    @RequestMapping("/detail")
-    public String detail(Model model, @RequestParam("id") Integer id, HttpSession httpSession) throws Exception {
-        BoardDto board = null;
-        board = boardService.get(id);
-        log.info("%%%%");
-        board.getCommentList().stream().forEach(c -> log.info((c.toString())));
-        if (httpSession!=null && !board.getCustId().equals(httpSession.getAttribute("id"))) {
-            boardService.cntUpdate(id);
-        }
-        model.addAttribute("board", board);
-        model.addAttribute("center",dir+"detail");
 
+    @RequestMapping("/detail")
+    public String detail(Model model, @RequestParam("id") int id, HttpSession httpSession) throws Exception {
+        BoardDto boardDto = null;
+        try {
+            boardDto = boardService.get(id);
+            log.info("%%%%");
+            boardDto.getCommentList().stream().forEach(c->{log.info(c.toString());});
+
+            if(httpSession != null &&
+                    !boardDto.getCustId().equals(httpSession.getAttribute("id"))){
+                boardService.cntUpdate(id);
+            }
+
+            model.addAttribute("board", boardDto);
+            model.addAttribute("center",dir+"detail");
+        } catch (Exception e) {
+            throw e;
+        }
         return "index";
     }
+//    @RequestMapping("/detail")
+//    public String detail(Model model, @RequestParam("id") Integer id, HttpSession httpSession) throws Exception {
+//        BoardDto board = null;
+//        try {
+//            board = boardService.get(id);
+//            log.info("%%%%");
+//            board.getCommentList().stream().forEach(c -> log.info((c.toString())));
+//            if (httpSession!=null && !board.getCustId().equals(httpSession.getAttribute("id"))) {
+//                boardService.cntUpdate(id);
+//            }
+//            model.addAttribute("board", board);
+//            model.addAttribute("center",dir+"detail");
+//        } catch (Exception e) {
+//            throw e;
+//        }
+//
+//        return "index";
+//    }
 
     @RequestMapping("/update")
     public String update(Model model,BoardDto boardDto) throws Exception {
@@ -75,5 +101,20 @@ public class BoardController {
     public String delete(Model model, @RequestParam("id") int id) throws Exception {
         boardService.del(id);
         return "redirect:/board/get";
+    }
+
+    @RequestMapping("/allpage")
+    public String allPage(Model model, @RequestParam("pageNo") int pageNo) {
+        PageInfo<BoardDto> p ;
+        try {
+            p = new PageInfo<>(boardService.getPage(pageNo),5);
+            model.addAttribute("cpage", p);
+            model.addAttribute("left", "left");
+            model.addAttribute("target","/board");
+            model.addAttribute("center", dir+"allpage");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "index";
     }
 }

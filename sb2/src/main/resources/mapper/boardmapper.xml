@@ -7,29 +7,32 @@
         <id column="board_id" property="boardId" />
         <result column="board_title" property="boardTitle" />
         <result column="board_content" property="boardContent" />
-        <result column="cust_id" property="custId" />
+        <result column="comment_cust_id" property="custId" />
         <result column="board_regdate" property="boardRegdate" />
         <result column="board_update" property="boardUpdate" />
         <result column="board_cnt" property="boardCnt" />
 <!--        1 대 다-->
         <collection property="commentList" ofType="commentDto">
             <id column="comment_id" property="commentId" />
-            <result column="cust_id" property="custId" />
+            <result column="comment_cust_id" property="custId" />
             <result column="comment_content" property="commentContent" />
             <result column="comment_regdate" property="commentRegdate" />
             <result column="comment_update" property="commentUpdate" />
-            <result column="board_id" property="boardId" />
         </collection>
     </resultMap>
 
     <select id="selectOne" parameterType="Integer" resultMap="boardcomment">
-        select * from db_board b
-        inner join db_comment c
+        select *, c.cust_id as comment_cust_id
+        from db_board b
+        left join db_comment c
         on b.board_id = c.board_id
         where b.board_id=#{id}
     </select>
     <select id="select" resultType="boardDto">
         select b.*, (select count(*) from db_comment where board_id=b.board_id) as comment_cnt from db_board b
+    </select>
+    <select id="getPage" resultType="boardDto">
+        SELECT * FROM db_board
     </select>
     <select id="getRank" parameterType="String" resultType="boardDto">
         select * from db_board order by board_cnt desc limit 3

@@ -56,9 +56,11 @@ public class BoardController {
         try {
             boardDto = boardService.get(id);
             log.info("%%%%");
-            boardDto.getCommentList().stream().forEach(c->{log.info(c.toString());});
+//            boardDto.getCommentList().stream().forEach(c->{log.info(c.toString());});
 
-            if(httpSession != null &&
+            if (boardDto.getCustId() == null) {
+                boardService.cntUpdate(id);
+            } else if(httpSession != null &&
                     !boardDto.getCustId().equals(httpSession.getAttribute("id"))){
                 boardService.cntUpdate(id);
             }
@@ -70,24 +72,6 @@ public class BoardController {
         }
         return "index";
     }
-//    @RequestMapping("/detail")
-//    public String detail(Model model, @RequestParam("id") Integer id, HttpSession httpSession) throws Exception {
-//        BoardDto board = null;
-//        try {
-//            board = boardService.get(id);
-//            log.info("%%%%");
-//            board.getCommentList().stream().forEach(c -> log.info((c.toString())));
-//            if (httpSession!=null && !board.getCustId().equals(httpSession.getAttribute("id"))) {
-//                boardService.cntUpdate(id);
-//            }
-//            model.addAttribute("board", board);
-//            model.addAttribute("center",dir+"detail");
-//        } catch (Exception e) {
-//            throw e;
-//        }
-//
-//        return "index";
-//    }
 
     @RequestMapping("/update")
     public String update(Model model,BoardDto boardDto) throws Exception {

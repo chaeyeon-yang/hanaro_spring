@@ -7,7 +7,7 @@
         <id column="board_id" property="boardId" />
         <result column="board_title" property="boardTitle" />
         <result column="board_content" property="boardContent" />
-        <result column="comment_cust_id" property="custId" />
+        <result column="cust_id" property="custId" />
         <result column="board_regdate" property="boardRegdate" />
         <result column="board_update" property="boardUpdate" />
         <result column="board_cnt" property="boardCnt" />

@@ -76,8 +76,8 @@
             <textarea rows="8" class="form-control" id="boardContent" placeholder="내용을 입력하세요." name="boardContent">${board.boardContent}</textarea>
         </div>
         <div class="form-group">
-            <label for="custId">글쓴이</label>
-            <input readonly="readonly" type="text" class="form-control" id="custId"  name="custId" value="${board.custId}">
+            <label for="custid">글쓴이</label>
+            <input readonly="readonly" type="text" class="form-control" id="custid"  name="custId" value="${board.custId}">
         </div>
         <input type="hidden" class="form-control" name="boardId" value="${board.boardId}">
         <p>
@@ -96,26 +96,37 @@
             <button type="button" class="btn" id="delete_btn">삭제하기</button>
         </c:if>
     </form>
-    <%--  Comment List  --%>
-    <table class="table table-striped" id="comment_table">
-        <thead>
-        <tr>
-            <th>CustID</th>
-            <th>Content</th>
-            <th>RegDate</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${board.commentList}" var="c">
-            <tr>
-                <td>${c.custId}</td>
-                <td>${c.commentContent}</td>
-                <td><fmt:parseDate value="${c.commentRegdate}"
-                                   pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
-                    <fmt:formatDate pattern="yyyy년 MM월 dd일 HH시 mm분" value="${ parsedDateTime }" /></td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+    <%-- Comment List    --%>
 
+    <c:choose>
+        <c:when test="${board.commentList.size() != 0}">
+            <%--            <c:when test="${board.commentList != []}">--%>
+            <%--            <c:when test="${!empty(board.commentList)}">--%>
+            <table class="table table-striped" id="comment_table">
+                <thead>
+                <tr>
+                    <th>Content</th>
+                    <th>CustId</th>
+                    <th>RegDate</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="c" items="${board.commentList}">
+                    <tr>
+                        <td>${c.commentContent}</td>
+                        <td>${c.custId}</td>
+                        <td>
+                            <fmt:parseDate value="${c.commentRegdate}"
+                                           pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+                            <fmt:formatDate pattern="yyyy년MM월dd일 HH시mm분" value="${ parsedDateTime }" />
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:when>
+        <c:otherwise>
+            <p>없음</p>
+        </c:otherwise>
+    </c:choose>
 </div>

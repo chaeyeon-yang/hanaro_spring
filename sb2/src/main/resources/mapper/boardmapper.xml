@@ -8,10 +8,7 @@
         SELECT * FROM db_board WHERE board_id=#{boardId}
     </select>
     <select id="select" resultType="boardDto">
-        SELECT * FROM db_board
-    </select>
-    <select id="selectAddr" parameterType="String" resultType="boardDto">
-        SELECT * FROM db_board WHERE cust_id=#{custId}
+        select b.*, (select count(*) from db_comment where board_id=b.board_id) as comment_cnt from db_board b
     </select>
     <select id="getRank" parameterType="String" resultType="boardDto">
         select * from db_board order by board_cnt desc limit 3

@@ -5,6 +5,9 @@
     p{
         color:red;
     }
+    span {
+        color:darkred;
+    }
 </style>
 
 
@@ -26,7 +29,11 @@
             <tr>
                 <td><a href="<c:url value="/board/detail"/>?id=${b.boardId}">${b.boardId}</a></td>
                 <td>${b.custId}</td>
-                <td>${b.boardTitle}</td>
+                <td>${b.boardTitle}
+                    <c:if test="${b.commentCnt != 0}">
+                        <span>(${b.commentCnt})</span>
+                    </c:if>
+                </td>
                 <td><fmt:parseDate value="${b.boardUpdate}"
                                    pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
                     <fmt:formatDate pattern="yyyy년 MM월 dd일 HH시 mm분" value="${ parsedDateTime }" /></td>

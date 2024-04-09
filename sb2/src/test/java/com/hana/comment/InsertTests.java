@@ -19,7 +19,7 @@ class InsertTests {
     CommentService commentService;
     @Test
     void contextLoads() {
-        CommentDto commentDto = CommentDto.builder().custId("id07").commentContent("강영현 바부").boardId(3).build();
+        CommentDto commentDto = CommentDto.builder().custId("id04").commentContent("리쯔웨이 황위쉬안 영원하라").boardId(6).build();
         try {
             commentService.add(commentDto);
             log.info("----------OK----------------");

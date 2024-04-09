@@ -31,7 +31,7 @@
                 <td>${b.custId}</td>
                 <td>${b.boardTitle}
                     <c:if test="${b.commentCnt != 0}">
-                        <span>(${b.commentCnt})</span>
+                        <span>[${b.commentCnt}]</span>
                     </c:if>
                 </td>
                 <td><fmt:parseDate value="${b.boardUpdate}"

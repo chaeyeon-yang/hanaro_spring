@@ -36,4 +36,7 @@
   <li class="nav-item">
     <a class="nav-link" href="<c:url value="/board/allpage?pageNo=1" />">Board Paging</a>
   </li>
+  <li>
+    <a class="nav-link" href="<c:url value="/weather"/>">Weather</a>
+  </li>
 </ul>

@@ -14,8 +14,8 @@ spring:
     url: jdbc:log4jdbc:mysql://127.0.0.1:3306/shopdb?characterEncoding=utf8
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://127.0.0.1:3306/shopdb?characterEncoding=utf8&serverTimezone=Asia/Seoul
-    username: root
-    password: asycy1101!
+    username: ENC(B8M6XRGjMu29nAZtL5elcg==)
+    password: ENC(QzJnvRkyvX/95q/1T/cYeaiTqCcsEZWS)
 mybatis:
   type-aliases-package: com.hana.app.data.dto
   mapper-locations: classpath:/mapper/*.xml

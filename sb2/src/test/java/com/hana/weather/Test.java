@@ -20,5 +20,10 @@ public class Test {
         String loc = "109";
         JSONObject jsonObject = (JSONObject) WeatherUtil.getWeather(loc, key);
         log.info("----------LOG----------------"+jsonObject.toJSONString());
+
+        String key2 = "7f120f7054467ba75e2457e0bc2fbe3b";
+        String loc2 = "1835848";
+        JSONObject jsonObject2 = (JSONObject) WeatherUtil.getWeather2(loc2, key2);
+        log.info("----------LOG2----------------"+jsonObject2.toJSONString());
     }
 }

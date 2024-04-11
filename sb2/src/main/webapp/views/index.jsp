@@ -23,6 +23,11 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <%-- Web Socket Lib    --%>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
     <%-- Custom API   --%>
     <script src="<c:url value="/js/0327.js" />"></script>
 
@@ -60,6 +65,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/logout" />">LOGOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/chat" />">CHAT</a>
             </li>
         </ul>
 

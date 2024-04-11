@@ -49,8 +49,14 @@
                 this.stompClient.send("/receiveme", {}, msg);
             });
             $("#sendto").click(function() {
-                alert(websocket.id);
-                websocket.sendTo();
+                $('#sendto').click(()=>{
+                    var msg = JSON.stringify({
+                        'sendid' : this.id,
+                        'receiveid' : $('#target').val(),
+                        'content1' : $('#totext').val()
+                    });
+                    this.stompClient.send('/receiveto', {}, msg);
+                });
             });
         },
         connect:function(){

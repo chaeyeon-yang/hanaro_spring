@@ -30,8 +30,8 @@ public class MsgController {
         String id = msg.getSendid();
         String target = msg.getReceiveid();
         log.info("-------------------------");
-        log.info(target);
+        log.info(msg.toString());
 
-        template.convertAndSend("/send/to/"+target,msg);
+//        template.convertAndSend("/send/to/"+target,msg);
     }
 }

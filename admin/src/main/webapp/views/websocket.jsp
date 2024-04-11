@@ -34,6 +34,20 @@
             $('#disconnect').click(() => {
                 this.disconnect();
             })
+            $("#sendall").click(() => {
+                let msg = JSON.stringify({
+                    'sendid' : this.id,
+                    'content1' : $("#alltext").val()
+                });
+                this.stompClient.send("/receiveall", {}, msg);
+            });
+            $("#sendme").click(function() {
+                websocket.sendMe();
+            });
+            $("#sendto").click(function() {
+                alert(websocket.id);
+                websocket.sendTo();
+            });
         },
         connect:function(){
             var sid = this.id;
@@ -59,6 +73,28 @@
                 $("#status").text("Disconnected");
             }
         },
+        sendAll:function(){
+            var msg = JSON.stringify({
+                'sendid' : this.id,
+                'content1' : $("#alltext").val()
+            });
+            this.stompClient.send("/receiveall", {}, msg);
+        },
+        sendTo:function(){
+            var msg = JSON.stringify({
+                'sendid' : this.id,
+                'receiveid' : $('#target').val(),
+                'content1' : $('#totext').val()
+            });
+            this.stompClient.send('/receiveto', {}, msg);
+        },
+        sendMe:function(){
+            var msg = JSON.stringify({
+                'sendid' : this.id,
+                'content1' : $('#metext').val()
+            });
+            this.stompClient.send("/receiveme", {}, msg);
+        }
     };
     $(function(){
         websocket.init();

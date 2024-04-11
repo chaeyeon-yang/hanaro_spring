@@ -1,5 +1,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+    #all {
+        width: 400px;
+        height: 200px;
+        overflow: auto;
+        border: 2px solid red;
+    }
+    #me {
+        width: 400px;
+        height: 200px;
+        overflow: auto;
+        border: 2px solid blue;
+    }
+    #to {
+        width: 400px;
+        height: 200px;
+        overflow: auto;
+        border: 2px solid green;
+    }
+</style>
+
+
 <script>
     let websocket = {
         id: '',
@@ -14,7 +36,7 @@
             })
         },
         connect:function(){
-            var sid = websocket.id;
+            var sid = this.id;
             var socket = new SockJS('${serverurl}/ws'); //웹 소켓 서버에 접속
             this.stompClient = Stomp.over(socket);
 
@@ -29,6 +51,13 @@
             }
             websocket.setConnected(false);
             console.log("Disconnected");
+        },
+        setConnected:function(connected){
+            if (connected) {
+                $("#status").text("Connected");
+            } else {
+                $("#status").text("Disconnected");
+            }
         },
     };
     $(function(){

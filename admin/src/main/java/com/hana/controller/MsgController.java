@@ -16,7 +16,7 @@ public class MsgController {
     @MessageMapping("/receiveall") // 모두에게 전송
     public void receiveall(Msg msg, SimpMessageHeaderAccessor headerAccessor) {
         System.out.println(msg);
-        template.convertAndSend("/send",msg);
+        template.convertAndSend("/send",msg); // 화면에서 send를 기다리는 애에게 msg를 보내겠다.
     }
     @MessageMapping("/receiveme") // 나에게만 전송 ex)Chatbot
     public void receiveme(Msg msg, SimpMessageHeaderAccessor headerAccessor) {
@@ -32,6 +32,6 @@ public class MsgController {
         log.info("-------------------------");
         log.info(msg.toString());
 
-//        template.convertAndSend("/send/to/"+target,msg);
+        template.convertAndSend("/send/to/"+target,msg);
     }
 }

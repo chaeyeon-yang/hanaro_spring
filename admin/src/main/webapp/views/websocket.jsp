@@ -24,7 +24,7 @@
 
 <script>
     let websocket = {
-        id: '',
+        id: 'ma',
         stompClient: null, // 웹소켓의 클라이언트 소켓이 됨
         init:function(){
             this.id = $('#adm_id').text();
@@ -42,7 +42,11 @@
                 this.stompClient.send("/receiveall", {}, msg);
             });
             $("#sendme").click(function() {
-                websocket.sendMe();
+                let msg = JSON.stringify({
+                    'sendid' : this.id,
+                    'content1' : $("#metext").val()
+                });
+                this.stompClient.send("/receiveme", {}, msg);
             });
             $("#sendto").click(function() {
                 alert(websocket.id);
@@ -57,6 +61,24 @@
             this.stompClient.connect({}, function(frame) {
                 websocket.setConnected(true);
                 console.log('Connected: ' + frame);
+
+                this.subscribe('/send', function(msg) {
+                    $("#all").prepend(
+                        "<h4>" + JSON.parse(msg.body).sendid +":"+
+                        JSON.parse(msg.body).content1
+                        + "</h4>");
+                });
+                this.subscribe('/send/'+sid, function(msg) {
+                    $("#me").prepend(
+                        "<h4>" + JSON.parse(msg.body).sendid +":"+
+                        JSON.parse(msg.body).content1+ "</h4>");
+                });
+                this.subscribe('/send/to/'+sid, function(msg) {
+                    $("#to").prepend(
+                        "<h4>" + JSON.parse(msg.body).sendid +":"+
+                        JSON.parse(msg.body).content1
+                        + "</h4>");
+                });
             });
         },
         disconnect:function(){

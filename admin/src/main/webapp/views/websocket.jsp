@@ -60,7 +60,7 @@
             });
         },
         connect:function(){
-            var sid = this.id;
+            var sid = websocket.id;
             var socket = new SockJS('${serverurl}/ws'); //웹 소켓 서버에 접속
             this.stompClient = Stomp.over(socket);
 
@@ -103,14 +103,14 @@
         },
         sendAll:function(){
             var msg = JSON.stringify({
-                'sendid' : this.id,
+                'sendid' : websocket.id,
                 'content1' : $("#alltext").val()
             });
             this.stompClient.send("/receiveall", {}, msg);
         },
         sendTo:function(){
             var msg = JSON.stringify({
-                'sendid' : this.id,
+                'sendid' : websocket.id,
                 'receiveid' : $('#target').val(),
                 'content1' : $('#totext').val()
             });
@@ -118,7 +118,7 @@
         },
         sendMe:function(){
             var msg = JSON.stringify({
-                'sendid' : this.id,
+                'sendid' : websocket.id,
                 'content1' : $('#metext').val()
             });
             this.stompClient.send("/receiveme", {}, msg);
@@ -143,7 +143,7 @@
         <div class="card-body">
             <div id="container"></div>
             <div class="col-sm-5">
-                <h1 id="adm_id">${logincust.id}</h1>
+                <h1 id="adm_id">${sessionScope.admin.id}</h1>
                 <H1 id="status">Status</H1>
                 <button id="connect">Connect</button>
                 <button id="disconnect">Disconnect</button>

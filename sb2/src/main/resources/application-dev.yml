@@ -28,6 +28,7 @@ logging:
 app:
   url:
     serverurl: http://172.16.20.116:81
+    otherurl: http://172.16.21.91.81
   dir:
     imgdir: file:/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs/ # 화면 출력용
     uploadimgdir: /Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs/ # 파일 Write 용

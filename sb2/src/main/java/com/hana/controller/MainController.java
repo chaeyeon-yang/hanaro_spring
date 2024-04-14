@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class MainController {
 
     final CustService custService;
     final BoardService boardService;
-//    final BCryptPasswordEncoder encoder;
+    final BCryptPasswordEncoder encoder;
 
     @Value("${app.key.wkey}")
     String wkey;
@@ -76,7 +77,7 @@ public class MainController {
             if (custDto == null) {
                 throw new Exception();
             }
-            if (!custDto.getPwd().equals(pwd)) {
+            if (!encoder.matches(pwd, custDto.getPwd())) {
                 throw new Exception();
             }
             httpSession.setAttribute("id", id);
@@ -91,16 +92,17 @@ public class MainController {
     @RequestMapping("/registerimpl")
     public String registerimpl(Model model,
                                CustDto custDto, HttpSession httpSession){
-//        log.info(custDto.getId());
-//        log.info(custDto.getName());
+        // 회원에게 받은 정보 -> 서버에 저장시 암호화
+        // 그러나, 서버에 정보가 가는 도중에 해킹이 가능하다(따라서 화면에서 입력받을 때 부터 가상키패드 사용함)
         try {
             log.info("-------------logloglog");
 //            log.info(encoder.encode(custDto.getPwd()));
 //            log.info(encoder.encode(custDto.getPwd()).length()+"");
+            // 회원가입 시 비밀번호 암호화
+            custDto.setPwd(encoder.encode(custDto.getPwd()));
             custService.add(custDto);
-            if (httpSession.getId() == null) {
-                httpSession.setAttribute("id", custDto.getId());
-            }
+            // 회원가입과 동시에 로그인 가능: 서버 세션에 사용자의 ID를 저장
+            httpSession.setAttribute("id", custDto.getId());
         } catch (Exception e) {
             model.addAttribute("center","registerfail");
         }

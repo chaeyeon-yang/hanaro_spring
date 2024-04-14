@@ -13,6 +13,10 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="<c:url value="/webjars/sockjs-client/sockjs.min.js"/> "></script>
+    <script src="<c:url value="/webjars/stomp-websocket/stomp.min.js"/> "></script>
+
     <%-- KAKAO Map API   --%>
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b91233131542ddc771208f56029a6d98"></script>
 

@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +27,7 @@ public class MainController {
 
     final CustService custService;
     final BoardService boardService;
-    final BCryptPasswordEncoder encoder;
+//    final BCryptPasswordEncoder encoder;
 
     @Value("${app.key.wkey}")
     String wkey;
@@ -96,8 +95,8 @@ public class MainController {
 //        log.info(custDto.getName());
         try {
             log.info("-------------logloglog");
-            log.info(encoder.encode(custDto.getPwd()));
-            log.info(encoder.encode(custDto.getPwd()).length()+"");
+//            log.info(encoder.encode(custDto.getPwd()));
+//            log.info(encoder.encode(custDto.getPwd()).length()+"");
             custService.add(custDto);
             if (httpSession.getId() == null) {
                 httpSession.setAttribute("id", custDto.getId());

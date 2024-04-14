@@ -29,7 +29,7 @@
 </style>
 <script>
     let websocket = {
-        id: 'ma',
+        id: '',
         stompClient: null, // 웹소켓의 클라이언트 소켓이 됨
         init:function(){
             this.id = $('#adm_id').text();
@@ -46,14 +46,14 @@
                 });
                 this.stompClient.send("/receiveall", {}, msg);
             });
-            $("#sendme").click(function() {
+            $("#sendme").click(() => {
                 let msg = JSON.stringify({
                     'sendid' : this.id,
                     'content1' : $("#metext").val()
                 });
                 this.stompClient.send("/receiveme", {}, msg);
             });
-            $("#sendto").click(function() {
+            $("#sendto").click(() =>  {
                 $('#sendto').click(()=>{
                     var msg = JSON.stringify({
                         'sendid' : this.id,

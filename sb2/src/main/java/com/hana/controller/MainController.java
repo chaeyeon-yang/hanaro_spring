@@ -4,6 +4,7 @@ import com.hana.app.data.dto.BoardDto;
 import com.hana.app.data.dto.CustDto;
 import com.hana.app.service.BoardService;
 import com.hana.app.service.CustService;
+import com.hana.util.StringEnc;
 import com.hana.util.WeatherUtil;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -100,6 +101,8 @@ public class MainController {
 //            log.info(encoder.encode(custDto.getPwd()).length()+"");
             // 회원가입 시 비밀번호 암호화
             custDto.setPwd(encoder.encode(custDto.getPwd()));
+            // 회원가입 시 사용자 이름 암호화하여 저장
+            custDto.setName(StringEnc.encryptor(custDto.getName()));
             custService.add(custDto);
             // 회원가입과 동시에 로그인 가능: 서버 세션에 사용자의 ID를 저장
             httpSession.setAttribute("id", custDto.getId());

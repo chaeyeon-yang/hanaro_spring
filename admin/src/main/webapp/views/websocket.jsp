@@ -41,14 +41,14 @@
                 });
                 this.stompClient.send("/receiveall", {}, msg);
             });
-            $("#sendme").click(function() {
+            $("#sendme").click(() => {
                 let msg = JSON.stringify({
                     'sendid' : this.id,
                     'content1' : $("#metext").val()
                 });
                 this.stompClient.send("/receiveme", {}, msg);
             });
-            $("#sendto").click(function() {
+            $("#sendto").click(() =>  {
                 $('#sendto').click(()=>{
                     var msg = JSON.stringify({
                         'sendid' : this.id,

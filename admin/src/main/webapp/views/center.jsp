@@ -14,6 +14,8 @@
             // 웹 소켓 서버로 접속
             let socket = new SockJS('${serverurl}/wss');
             this.stompClient = Stomp.over(socket);
+            console.log('Start -------');
+
             // frame : 연결이 성공했을 때 서버로부터 받는 STOMP 프레임
             this.stompClient.connect({},function(frame){
                 console.log(frame);
@@ -83,7 +85,7 @@
                 });
 
                 // if (pollingInput.value < 1 || !pollingInput.value) {
-                pollingInput.value = 1;
+                // pollingInput.value = 1;
                 // }
             }
 

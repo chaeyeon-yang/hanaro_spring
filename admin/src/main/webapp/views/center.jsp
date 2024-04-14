@@ -3,6 +3,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
+    // 웹소켓으로 실시간 데이터 통신 구현
+    // 주로 서버와의 양방향 통신을 설정하고, 서버로부터 데이터를 받아 처리하는 과정
+
+    // 화면 렌더링 시 connect
+    // 데이터가 오기를 기다린다
+    let center_websocket = {
+        stompClient:null,
+        init:function(){
+            // 웹 소켓 서버로 접속
+            let socket = new SockJS('${serverurl}/wss');
+            this.stompClient = Stomp.over(socket);
+            // frame : 연결이 성공했을 때 서버로부터 받는 STOMP 프레임
+            this.stompClient.connect({},function(frame){
+                console.log(frame);
+                // wss 접속 -> send2로 서버에서 보내면 subscribe 받음
+                // 서버에서 나가는 통로를 send2로 하겠음
+                this.subscribe('/send2',function(msg){
+                    // 채팅 msg: 보내는 사람, 받는 사람, content
+                    console.log(msg);
+                });
+            });
+        }
+    };
+
     let center = {
         init:function(){
             const defaultData = '${chartUrl}/logs/custinfo.log';
@@ -76,6 +100,7 @@
     };
     $(function(){
         center.init();
+        center_websocket.init();
     });
 </script>
 

@@ -1,6 +1,8 @@
 package com.hana.controller;
 
 import com.hana.app.data.dto.CustDto;
+import com.hana.app.data.entity.LoginCust;
+import com.hana.app.repository.LoginCustRepository;
 import com.hana.app.service.CustService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
@@ -18,6 +20,7 @@ import java.util.List;
 public class CustController {
 
     final CustService custService;
+    final LoginCustRepository loginCustRepository;
 
     String dir = "cust/";
     @RequestMapping("/get")
@@ -78,5 +81,19 @@ public class CustController {
     public String addimpl(Model model,CustDto custDto) throws Exception{
         custService.add(custDto);
         return "redirect:/cust/detail?id="+custDto.getId();
+    }
+
+    @RequestMapping("/logininfo")
+    public String logininfo(Model model){
+        long cnt = loginCustRepository.count();
+        Iterable<LoginCust> it = loginCustRepository.findAll();
+        List<LoginCust> list = new ArrayList<>();
+        it.forEach(lc->{
+            list.add(lc);
+        });
+        model.addAttribute("logincusts",list);
+        model.addAttribute("cnt",cnt);
+        model.addAttribute("center",dir+"logininfo");
+        return "index";
     }
 }

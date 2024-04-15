@@ -2,6 +2,8 @@ package com.hana.controller;
 
 import com.hana.app.data.dto.BoardDto;
 import com.hana.app.data.dto.CustDto;
+import com.hana.app.data.entity.LoginCust;
+import com.hana.app.repository.LoginCustRepository;
 import com.hana.app.service.BoardService;
 import com.hana.app.service.CustService;
 import com.hana.util.StringEnc;
@@ -30,6 +32,7 @@ public class MainController {
     final CustService custService;
     final BoardService boardService;
     final BCryptPasswordEncoder encoder;
+    final LoginCustRepository loginCustRepository;
 
     @Value("${app.key.wkey}")
     String wkey;
@@ -68,6 +71,18 @@ public class MainController {
         }
         return "index";
     }
+
+    @RequestMapping("/logoutimpl")
+    public String logoutimpl(Model model, HttpSession httpSession) {
+        log.info("start logout ---------------------------------------");
+        if (httpSession != null) {
+            loginCustRepository.deleteById((String) httpSession.getAttribute("id"));
+            httpSession.invalidate();
+        }
+        log.info("end Logout -----------------------------------------");
+        return "index";
+    }
+
     @RequestMapping("/loginimpl")
     public String loginimpl(Model model,
                             @RequestParam("id") String id,
@@ -81,6 +96,9 @@ public class MainController {
             if (!encoder.matches(pwd, custDto.getPwd())) {
                 throw new Exception();
             }
+            LoginCust loginCust = LoginCust.builder().loginId(id).build();
+            loginCustRepository.save(loginCust);
+
             httpSession.setAttribute("id", id);
         } catch (Exception e){
             model.addAttribute("msg","ID또는 PWD가 틀렸습니다.");

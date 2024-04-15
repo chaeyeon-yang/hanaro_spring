@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Controller
@@ -96,14 +97,25 @@ public class MainController {
             if (!encoder.matches(pwd, custDto.getPwd())) {
                 throw new Exception();
             }
-            LoginCust loginCust = LoginCust.builder().loginId(id).build();
-            loginCustRepository.save(loginCust);
+
+            Optional<LoginCust> loginCust = loginCustRepository.findById(id);
+            if (loginCust.isPresent()) {
+                throw new Exception();
+            }
+
+            loginCustRepository.save(LoginCust.builder().loginId(id).build());
 
             httpSession.setAttribute("id", id);
-        } catch (Exception e){
-            model.addAttribute("msg","ID또는 PWD가 틀렸습니다.");
-            model.addAttribute("center","login");
-            //throw new RuntimeException(e);
+        }
+
+        catch (IllegalArgumentException e) {
+            model.addAttribute("msg", "ID/PWD가 일치하지 않습니다.");
+            model.addAttribute("center", "login");
+            return "index";
+        } catch (Exception e) {
+            model.addAttribute("msg", "이미 로그인 되어있습니다.");
+            model.addAttribute("center", "login");
+            return "index";
         }
         return "redirect:/";
     }

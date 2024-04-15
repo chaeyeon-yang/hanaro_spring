@@ -6,6 +6,7 @@ import com.hana.app.data.entity.LoginCust;
 import com.hana.app.repository.LoginCustRepository;
 import com.hana.app.service.BoardService;
 import com.hana.app.service.CustService;
+import com.hana.util.FileUploadUtil;
 import com.hana.util.StringEnc;
 import com.hana.util.WeatherUtil;
 import jakarta.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -34,6 +36,9 @@ public class MainController {
     final BoardService boardService;
     final BCryptPasswordEncoder encoder;
     final LoginCustRepository loginCustRepository;
+
+    @Value("${app.dir.uploadimgdir}")
+    String uploadImgDir;
 
     @Value("${app.key.wkey}")
     String wkey;
@@ -184,5 +189,20 @@ public class MainController {
         model.addAttribute("serverurl", serverurl);
         model.addAttribute("center","chat");
         return "index";
+    }
+
+    @RequestMapping("/pic")
+    public String pic(Model model){
+        model.addAttribute("center","pic");
+        return "index";
+    }
+
+    @RequestMapping("/saveimg")
+    @ResponseBody
+    public String saveimg(@RequestParam("file") MultipartFile file) throws IOException{
+        String imgname = file.getOriginalFilename();
+        FileUploadUtil.saveFile(file, uploadImgDir);
+
+        return imgname;
     }
 }

@@ -39,4 +39,7 @@
   <li>
     <a class="nav-link" href="<c:url value="/weather"/>">Weather</a>
   </li>
+  <li>
+    <a class="nav-link" href="<c:url value="/pic"/>">pic</a>
+  </li>
 </ul>

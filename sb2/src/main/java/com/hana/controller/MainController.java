@@ -123,6 +123,9 @@ public class MainController {
             custDto.setName(StringEnc.encryptor(custDto.getName()));
             custService.add(custDto);
             // 회원가입과 동시에 로그인 가능: 서버 세션에 사용자의 ID를 저장
+            LoginCust loginCust = LoginCust.builder().loginId(custDto.getId()).build();
+            loginCustRepository.save(loginCust);
+
             httpSession.setAttribute("id", custDto.getId());
         } catch (Exception e) {
             model.addAttribute("center","registerfail");

@@ -42,4 +42,7 @@
   <li>
     <a class="nav-link" href="<c:url value="/pic"/>">pic</a>
   </li>
+  <li>
+    <a class="nav-link" href="<c:url value="/summary"/>">summary</a>
+  </li>
 </ul>

@@ -1,11 +1,5 @@
 package com.hana.ncp;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import com.hana.util.NcpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;

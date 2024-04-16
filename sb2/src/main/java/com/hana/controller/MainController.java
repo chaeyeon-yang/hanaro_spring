@@ -7,11 +7,13 @@ import com.hana.app.repository.LoginCustRepository;
 import com.hana.app.service.BoardService;
 import com.hana.app.service.CustService;
 import com.hana.util.FileUploadUtil;
+import com.hana.util.NcpUtil;
 import com.hana.util.StringEnc;
 import com.hana.util.WeatherUtil;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -48,6 +50,12 @@ public class MainController {
 
     @Value("${app.url.serverurl}")
     String serverurl;
+
+    @Value("${app.key.ncp-id}")
+    String ncpId;
+
+    @Value("${app.key.ncp-secret}")
+    String ncpSecret;
 
     @RequestMapping("/")
     public String main(Model model) throws Exception {
@@ -204,5 +212,18 @@ public class MainController {
         FileUploadUtil.saveFile(file, uploadImgDir);
 
         return imgname;
+    }
+
+    @RequestMapping("/summary")
+    public String summary(Model model){
+        model.addAttribute("center","summary");
+        return "index";
+    }
+
+    @RequestMapping("/summaryimpl")
+    @ResponseBody
+    public Object summaryimpl(@RequestParam("content") String content){
+        JSONObject result = (JSONObject) NcpUtil.getSummary(ncpId, ncpSecret, content);
+        return result;
     }
 }

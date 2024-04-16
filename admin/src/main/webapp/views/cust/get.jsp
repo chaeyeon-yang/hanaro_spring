@@ -29,55 +29,51 @@
     });
 </script>
 <div class="container-fluid">
-
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank"
-                                                                   href="https://datatables.net">official DataTables documentation</a>.</p>
+    <h1 class="h3 mb-2 text-gray-800">회원 목록</h1>
+    <p class="mb-4"> 우리 서비스를 이용하는 회원의 정보입니다. <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Sb2 이용 회원</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>PWD</th>
-                        <th>NAME</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>PWD</th>
+                            <th>NAME</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>PWD</th>
-                        <th>NAME</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>PWD</th>
+                            <th>NAME</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
                     </tfoot>
                     <tbody>
-                    <c:forEach var="c" items="${custs}">
-                        <tr>
-                            <td><a href="<c:url value="/cust/detail"/>?id=${c.id}">${c.id}</a></td>
-                            <td>${c.pwd}</td>
-                            <td>${c.name}</td>
-                            <td><button onclick="cust_get.update('${c.id}')" type="button" class="btn btn-primary">Update</button></td>
-                            <td><button onclick="cust_get.delete('${c.id}')" type="button" class="btn btn-primary">Delete</button></td>
-                        </tr>
-                    </c:forEach>
+                        <c:forEach var="c" items="${custs}">
+                            <tr>
+                                <td><a href="<c:url value="/cust/detail"/>?id=${c.id}">${c.id}</a></td>
+                                <td>${c.pwd}</td>
+                                <td>${c.name}</td>
+                                <td><button onclick="cust_get.update('${c.id}')" type="button" class="btn btn-primary">Update</button></td>
+                                <td><button onclick="cust_get.delete('${c.id}')" type="button" class="btn btn-primary">Delete</button></td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </div>
 
 

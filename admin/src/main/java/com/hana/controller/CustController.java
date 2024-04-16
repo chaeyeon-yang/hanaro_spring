@@ -5,7 +5,6 @@ import com.hana.app.data.entity.LoginCust;
 import com.hana.app.repository.LoginCustRepository;
 import com.hana.app.service.CustService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +37,7 @@ public class CustController {
     }
 
     @RequestMapping("/detail")
-    public String detail(Model model,@RequestParam("id") String id){
+    public String detail(Model model, @RequestParam("id") String id){
         // Database에서 데이터를 가지고 온다.
         CustDto custDto = null;
         try {
@@ -78,7 +77,7 @@ public class CustController {
     }
 
     @RequestMapping("/addimpl")
-    public String addimpl(Model model,CustDto custDto) throws Exception{
+    public String addimpl(Model model, CustDto custDto) throws Exception{
         custService.add(custDto);
         return "redirect:/cust/detail?id="+custDto.getId();
     }

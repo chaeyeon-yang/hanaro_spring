@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 // value, key
-public interface LoginCustRepository extends CrudRepository<LoginCust,String> {
+public interface LoginCustRepository extends CrudRepository<LoginCust, String> {
 }

@@ -3,7 +3,6 @@ package com.hana.app.data.dto;
 import lombok.*;
 
 @Data
-@ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

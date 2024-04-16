@@ -101,9 +101,9 @@
             </li>
         </c:if>
         <li class="nav-item active">
-            <a class="nav-link" href="<c:url value="/websocket" />">
+            <a class="nav-link" href="<c:url value="/chat" />">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Web Socket</span></a>
+                <span>chat</span></a>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">

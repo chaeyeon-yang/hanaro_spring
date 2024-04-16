@@ -38,4 +38,7 @@ app:
     logdir: file:/Users/yangchaeyeon/Documents/sb_thymeleaf_project/logs/
   url:
     server-url: http://172.16.20.116:81
+  key:
+    ncp-id: zzdm9bwu8a
+    ncp-secret: smjoTiLsJV4JbPosAt0aw50WMvcsTQz0EGcBjsAJ
     #    file:/root/users/project/imgs/

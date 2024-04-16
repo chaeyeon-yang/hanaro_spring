@@ -25,6 +25,6 @@ public class StomWebSocketConfig implements WebSocketMessageBrokerConfigurer{
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         // 나갈때는 send2가 나감
-        registry.enableSimpleBroker("/send","/send2");
+        registry.enableSimpleBroker("/send","/send2","/send3");
     }
 }

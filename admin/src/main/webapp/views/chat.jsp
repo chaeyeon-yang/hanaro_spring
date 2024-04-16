@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
@@ -23,6 +22,8 @@
         border: 2px solid green;
     }
 </style>
+
+
 <script>
     let websocket = {
         id:'',
@@ -55,10 +56,11 @@
                 console.log('Connected: ' + frame);
 
                 this.subscribe('/send3/to/'+sid, function(msg) {
+                    $('#target').attr('value',JSON.parse(msg.body).sendid);
                     $("#to").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
+                        "<h5>" + JSON.parse(msg.body).sendid +":"+
                         JSON.parse(msg.body).content1
-                        + "</h4>");
+                        + "</h5>");
                 });
             });
         },
@@ -81,19 +83,35 @@
         websocket.init();
     });
 </script>
-<div class="container">
-    <h2>Chat Page</h2>
-    <div class="col-sm-5">
-        <h1 id="adm_id">${sessionScope.id}</h1>
-        <H1 id="status">Status</H1>
-        <button id="connect">Connect</button>
-        <button id="disconnect">Disconnect</button>
 
-        <h3>To</h3>
-        <input type="text" id="target" value="sadmin">
-        <input type="text" id="totext"><button id="sendto">Send</button>
-        <div id="to"></div>
 
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Chat</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Chat</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="col-sm-5">
+                    <h1 id="adm_id">${sessionScope.admin.id}</h1>
+                    <H1 id="status">Status</H1>
+                    <button id="connect">Connect</button>
+                    <button id="disconnect">Disconnect</button>
+
+                    <h3>To</h3>
+                    <input type="text" id="target">
+                    <input type="text" id="totext"><button id="sendto">Send</button>
+                    <div id="to"></div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

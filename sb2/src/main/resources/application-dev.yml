@@ -7,7 +7,6 @@ server:
     session:
       timeout: 10m
 spring:
-
   session:
     redis:
       namespace: spring:session
@@ -49,3 +48,5 @@ app:
   key:
     wkey: 3JjM4ywSiOm68eVL9D4idMkcUiZ5GKlKWAl1H44IotvQ5ypCVmj%2ByLqMeSXwP4c3ckD0bo7iCyN8JkOwgtkINg%3D%3D
     whkey: 7f120f7054467ba75e2457e0bc2fbe3b
+    ncp-id: zzdm9bwu8a
+    ncp-secret: 87kVm8SeUMQa1e8VAIdzApDXlYe5fjDPLlBKJdms

@@ -226,4 +226,11 @@ public class MainController {
         JSONObject result = (JSONObject) NcpUtil.getSummary(ncpId, ncpSecret, content);
         return result;
     }
+
+    @RequestMapping("/chat2")
+    public String chat2(Model model){
+        model.addAttribute("serverurl", serverurl);
+        model.addAttribute("center","chat2");
+        return "index";
+    }
 }

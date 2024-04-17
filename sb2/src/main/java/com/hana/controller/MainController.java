@@ -50,6 +50,9 @@ public class MainController {
     @Value("${app.url.serverurl}")
     String serverurl;
 
+    @Value("${app.url.chatboturl}")
+    String chatboturl;
+
     @Value("${app.key.ncp-id}")
     String ncpId;
 
@@ -255,7 +258,7 @@ public class MainController {
 
     @RequestMapping("/chatbot")
     public String chatbot(Model model){
-        model.addAttribute("serverurl", serverurl);
+        model.addAttribute("serverurl", chatboturl);
         model.addAttribute("center","chatbot");
         return "index";
     }

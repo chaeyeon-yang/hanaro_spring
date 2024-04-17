@@ -33,56 +33,31 @@
         stompClient: null, // 웹소켓의 클라이언트 소켓이 됨
         init:function(){
             this.id = $('#adm_id').text();
+            this.connect();
             $('#connect').click(() => {
                 this.connect();
             })
             $('#disconnect').click(() => {
                 this.disconnect();
             })
-            $("#sendall").click(() => {
-                let msg = JSON.stringify({
-                    'sendid' : this.id,
-                    'content1' : $("#alltext").val()
-                });
-                this.stompClient.send("/receiveall", {}, msg);
-            });
-            $("#sendme").click(() => {
-                let msg = JSON.stringify({
-                    'sendid' : this.id,
-                    'content1' : $("#metext").val()
-                });
-                this.stompClient.send("/receiveme", {}, msg);
-            });
             $('#sendto').click(()=>{
                 var msg = JSON.stringify({
                     'sendid' : this.id,
-                    'receiveid' : $('#target').val(),
                     'content1' : $('#totext').val()
                 });
-                this.stompClient.send('/receiveto', {}, msg);
+                this.stompClient.send('/sendchatbot', {}, msg);
             });
         },
         connect:function(){
             var sid = websocket.id;
-            var socket = new SockJS('${serverurl}/ws'); //웹 소켓 서버에 접속
+            var socket = new SockJS('${serverurl}/chatbot'); //웹 소켓 서버에 접속
             this.stompClient = Stomp.over(socket);
 
             this.stompClient.connect({}, function(frame) {
                 websocket.setConnected(true);
                 console.log('Connected: ' + frame);
 
-                this.subscribe('/send', function(msg) {
-                    $("#all").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1
-                        + "</h4>");
-                });
-                this.subscribe('/send/'+sid, function(msg) {
-                    $("#me").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1+ "</h4>");
-                });
-                this.subscribe('/send/to/'+sid, function(msg) {
+                this.subscribe('/send/me/'+sid, function(msg) {
                     $("#to").prepend(
                         "<h4>" + JSON.parse(msg.body).sendid +":"+
                         JSON.parse(msg.body).content1
@@ -117,16 +92,7 @@
         <button id="connect">Connect</button>
         <button id="disconnect">Disconnect</button>
 
-        <h3>All</h3>
-        <input type="text" id="alltext"><button id="sendall">Send</button>
-        <div id="all"></div>
 
-        <h3>Me</h3>
-        <input type="text" id="metext"><button id="sendme">Send</button>
-        <div id="me"></div>
-
-        <h3>To</h3>
-        <input type="text" id="target">
         <input type="text" id="totext"><button id="sendto">Send</button>
         <div id="to"></div>
 

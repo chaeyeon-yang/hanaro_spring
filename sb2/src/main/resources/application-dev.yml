@@ -27,7 +27,7 @@ spring:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://127.0.0.1:3306/shopdb?characterEncoding=utf8&serverTimezone=Asia/Seoul
     username: ENC(B8M6XRGjMu29nAZtL5elcg==)
-    password: asycy1101!
+    password: ENC(FOiS8ZEr0EqSphbmWHnC6/Qnt0LynNol)
 mybatis:
   type-aliases-package: com.hana.app.data.dto
   mapper-locations: classpath:/mapper/*.xml
@@ -41,12 +41,15 @@ app:
   url:
     serverurl: http://172.16.20.116:81
     otherurl: http://172.16.21.91.81
+    chatboturl: http://172.16.20.116
   dir:
     imgdir: file:/Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs/ # 화면 출력용
     uploadimgdir: /Users/yangchaeyeon/Documents/sb_thymeleaf_project/imgs/ # 파일 Write 용
     logdir: file:/Users/yangchaeyeon/Documents/sb_thymeleaf_project/logs/
   key:
-    wkey: 3JjM4ywSiOm68eVL9D4idMkcUiZ5GKlKWAl1H44IotvQ5ypCVmj%2ByLqMeSXwP4c3ckD0bo7iCyN8JkOwgtkINg%3D%3D
-    whkey: 7f120f7054467ba75e2457e0bc2fbe3b
-    ncp-id: zzdm9bwu8a
-    ncp-secret: smjoTiLsJV4JbPosAt0aw50WMvcsTQz0EGcBjsAJ
+    wkey: ENC(zxGmIDBW4VTZMU0NZDn34JnEFcdGDZUow1zvgbZsWeVho0dlbKcg5rMB5JO3cFqu2SxFSwspJCvvPhOW2wKf3pnqnLmWATG4hMlaPZjKm/DNrTgp8IQXsP/yBunm5Usl7x04AWddLEc=)
+    whkey: ENC(0/jj0uRvSpQF7IVsWT2Fx89E6V4QETgUFO9aY+06em/CwwgPioyqVgV6ovjp+b9+)
+    ncp-id: ENC(q9a0V0IWVzqyfYYNqpKiJtmZkSzZ+Ey3)
+    ncp-secret: ENC(3Hp5muneuCW0BVrozlSu0boPjCeMVHQpIfTckJYjJyNa3JHuo2sn4izDZzuBj/d6CuBSjYPbMhM=)
+    chatbot_url: ENC(5ISwSDD4vXb0hX/hGf1tjmxa+P5a6qoieQUWFgQz6RnYFz8ho/cdori3m2PxA1P4rVva4bXYupAwecfGMlfZhiUTPuCwP9mXjXT649EqtZQvC81qfTJYypnv/GmR6ybKmKEbat1/TC57brntPhYaEVCnADwCURQFG/LpgbEmxS0=)
+    chatbot_key: ENC(yZOee07KWClgp/DR1fQAufs33W0jVlNLX5P1yowR7GFsGXcuCLgNP1XPvTCair+GPjhDNnrESyA=)

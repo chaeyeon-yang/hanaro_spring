@@ -2,14 +2,12 @@ package com.hana.controller;
 
 import com.hana.app.data.dto.BoardDto;
 import com.hana.app.data.dto.CustDto;
+import com.hana.app.data.dto.OcrDto;
 import com.hana.app.data.entity.LoginCust;
 import com.hana.app.repository.LoginCustRepository;
 import com.hana.app.service.BoardService;
 import com.hana.app.service.CustService;
-import com.hana.util.FileUploadUtil;
-import com.hana.util.NcpUtil;
-import com.hana.util.StringEnc;
-import com.hana.util.WeatherUtil;
+import com.hana.util.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
@@ -231,6 +230,26 @@ public class MainController {
     public String chat2(Model model){
         model.addAttribute("serverurl", serverurl);
         model.addAttribute("center","chat2");
+        return "index";
+    }
+
+    @RequestMapping("/ocr")
+    public String ocr(Model model){
+        model.addAttribute("center","ocr");
+        return "index";
+    }
+
+    @RequestMapping("/ocrimpl")
+    public String ocrimpl(Model model, OcrDto ocrDto) throws IOException {
+        String imgname = ocrDto.getImage().getOriginalFilename();
+
+        FileUploadUtil.saveFile(ocrDto.getImage(), uploadImgDir);
+        JSONObject jsonObject = OCRUtil.getResult(uploadImgDir, imgname);
+        Map<String, String> map = OCRUtil.getData(jsonObject);
+
+        model.addAttribute("result", map);
+        model.addAttribute("imgname", imgname);
+        model.addAttribute("center","ocr");
         return "index";
     }
 }

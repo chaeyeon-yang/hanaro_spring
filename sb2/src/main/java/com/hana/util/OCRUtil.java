@@ -138,5 +138,35 @@ public class OCRUtil {
         return map;
     }
 
+    public static Map getCardData(JSONObject obj){
+        Map<String,String> map = new HashMap<>();
+        JSONArray images = (JSONArray) obj.get("images");
+        JSONObject jo1 = (JSONObject) images.get(0);
+        JSONArray fields = (JSONArray) jo1.get("fields");
+
+//        JSONObject biznum_obj = (JSONObject) fields.get(0);
+//        String biznum = (String)biznum_obj.get("inferText");
+
+        JSONObject cardNum_obj = (JSONObject) fields.get(0);
+        String cardNum = (String)cardNum_obj.get("inferText");
+
+        JSONObject grade_obj = (JSONObject) fields.get(1);
+        String grade = (String)grade_obj.get("inferText");
+
+        JSONObject validDate_obj = (JSONObject) fields.get(2);
+        String validDate = (String)validDate_obj.get("inferText");
+
+        JSONObject ownerName_obj = (JSONObject) fields.get(3);
+        String ownerName = (String)ownerName_obj.get("inferText");
+
+//        map.put("biznum", biznum);
+        map.put("cardNum", cardNum);
+        map.put("grade", grade);
+        map.put("validDate", validDate);
+        map.put("ownerName", ownerName);
+
+        return map;
+    }
+
 
 }

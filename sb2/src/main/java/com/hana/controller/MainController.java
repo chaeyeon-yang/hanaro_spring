@@ -252,4 +252,11 @@ public class MainController {
         model.addAttribute("center","ocr");
         return "index";
     }
+
+    @RequestMapping("/chatbot")
+    public String chatbot(Model model){
+        model.addAttribute("serverurl", serverurl);
+        model.addAttribute("center","chatbot");
+        return "index";
+    }
 }

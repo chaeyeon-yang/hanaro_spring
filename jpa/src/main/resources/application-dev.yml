@@ -17,9 +17,11 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      # 수정사항이 생길 때에만 변경된다.
+      ddl-auto: update
     properties:
       hibernate:
+        # real로 반영할 때 sql 속성은 false로 해두는게 나음. sql이 계속 찍히기 때문에
         show_sql: true
         format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect

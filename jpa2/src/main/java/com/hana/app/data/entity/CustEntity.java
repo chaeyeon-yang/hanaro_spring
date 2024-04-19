@@ -3,6 +3,9 @@ package com.hana.app.data.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity(name = "cust") // db에 테이블 생성, alias로 엔티티간 인식이 편하게!
 @Table(name = "t_cust")
 @NoArgsConstructor
@@ -24,4 +27,8 @@ public class CustEntity extends BaseEntity {
     // ----> CustInfoEntity의 @ToString(exclude = "cust")
     @OneToOne(mappedBy = "cust")
     private CustInfoEntity custinfo;
+
+    @OneToMany(mappedBy = "cust", fetch = FetchType.EAGER)
+    @Builder.Default // 변수영역에 객체 생성
+    List<CustAddrEntity> custAddrs = new ArrayList<>();
 }

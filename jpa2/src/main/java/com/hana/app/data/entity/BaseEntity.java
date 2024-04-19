@@ -15,7 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 // builder는 객체를 생성할 때 사용.. 날짜 같은 경우는 자동생성이므로 의존성 주입 x
-@Getter
+@Getter // createdAt, updateAt의 getter
 @ToString
 @MappedSuperclass // 엔티티의 상위 클래스
 @EntityListeners(AuditingEntityListener.class) // 데이터베이스에 생성되는 엔티티가 아니다
@@ -24,6 +24,6 @@ public class BaseEntity {
     @Column(updatable = false)
     private LocalDateTime createdAt;
     @LastModifiedDate
-    @Setter
+    @Setter // 수정이 가능하도록하려면!
     private LocalDateTime updatedAt;
 }

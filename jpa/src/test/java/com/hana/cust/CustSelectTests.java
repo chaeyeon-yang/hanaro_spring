@@ -20,7 +20,7 @@ class CustSelectTests {
     @Test
     void contextLoads() {
 
-
+        // custInfo 까지 날아옴
         List<CustEntity> list = custService.get();
         list.forEach(c -> log.info(c.toString()));
 

@@ -10,20 +10,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-public class UpdateTests {
+class UpdateTests {
+
     @Autowired
-    private CustAddrService custAddrService;
+    CustAddrService custAddrService;
 
     @Test
     void contextLoads() {
         CustEntity cust = CustEntity.builder().id("id02").build();
         CustAddrEntity custAddr = CustAddrEntity.builder()
-                .id()
-                .name()
-                .addr()
+                .id(2L)
+                .name("가원집3")
+                .addr("Seoul Korea3")
                 .cust(cust)
                 .build();
         custAddrService.update(custAddr);
-        log.info("OK------------------");
+        log.info("OK----------------------");
     }
+
 }
